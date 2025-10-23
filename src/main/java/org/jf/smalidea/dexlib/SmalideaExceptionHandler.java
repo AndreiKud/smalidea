@@ -31,7 +31,7 @@
 
 package org.jf.smalidea.dexlib;
 
-import org.jf.dexlib2.base.BaseExceptionHandler;
+import com.android.tools.smali.dexlib2.base.BaseExceptionHandler;
 import org.jf.smalidea.psi.impl.SmaliCatchStatement;
 import org.jf.smalidea.psi.impl.SmaliClassTypeElement;
 import org.jf.smalidea.psi.impl.SmaliLabel;

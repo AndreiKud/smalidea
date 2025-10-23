@@ -34,8 +34,8 @@ package org.jf.smalidea.dexlib;
 import com.google.common.collect.ImmutableSet;
 import com.intellij.psi.PsiParameter;
 import org.jetbrains.annotations.Nullable;
-import org.jf.dexlib2.base.BaseMethodParameter;
-import org.jf.dexlib2.iface.Annotation;
+import com.android.tools.smali.dexlib2.base.BaseMethodParameter;
+import com.android.tools.smali.dexlib2.iface.Annotation;
 import org.jf.smalidea.util.NameUtils;
 import org.jf.smalidea.util.StringUtils;
 

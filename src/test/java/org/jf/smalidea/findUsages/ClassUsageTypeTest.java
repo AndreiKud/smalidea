@@ -35,7 +35,7 @@ import com.intellij.usages.impl.rules.UsageType;
 
 public class ClassUsageTypeTest extends UsageTypeTest {
     public ClassUsageTypeTest() {
-        super(new SmaliUsageTypeProvider());
+        super(SmaliUsageTypeProvider::new);
     }
 
     public void testClassUsageTypes() throws Exception {

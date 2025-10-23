@@ -37,12 +37,13 @@ import com.intellij.openapi.projectRoots.impl.JavaAwareProjectJdkTableImpl;
 import com.intellij.psi.JavaResolveResult;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiReference;
-import com.intellij.testFramework.ResolveTestCase;
+import com.intellij.testFramework.DumbModeTestUtils;
+import com.intellij.testFramework.JavaResolveTestCase;
 import org.jf.smalidea.psi.impl.SmaliClass;
 import org.jf.smalidea.psi.impl.SmaliClassTypeElement;
 import org.junit.Assert;
 
-public class ClassReferenceTest extends ResolveTestCase {
+public class ClassReferenceTest extends JavaResolveTestCase {
     /**
      * Test a reference to a java class from a smali class
      */
@@ -77,12 +78,10 @@ public class ClassReferenceTest extends ResolveTestCase {
         Assert.assertNotNull(typeElement);
         Assert.assertEquals("Object", typeElement.getName());
 
-        DumbServiceImpl.getInstance(getProject()).setDumb(true);
-
-        PsiClass psiClass = typeElement.resolve();
-        Assert.assertNull(psiClass);
-
-        DumbServiceImpl.getInstance(getProject()).setDumb(false);
+        DumbModeTestUtils.runInDumbModeSynchronously(getProject(), () -> {
+            PsiClass psiClass = typeElement.resolve();
+            Assert.assertNull(psiClass);
+        });
     }
 
     /**

@@ -35,7 +35,7 @@ import com.intellij.debugger.SourcePosition;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiPrimitiveType;
 import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
-import org.jf.dexlib2.Opcode;
+import com.android.tools.smali.dexlib2.Opcode;
 import org.jf.smalidea.psi.impl.*;
 import org.junit.Assert;
 

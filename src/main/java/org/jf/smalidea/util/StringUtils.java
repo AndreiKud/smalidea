@@ -33,8 +33,8 @@ package org.jf.smalidea.util;
 
 import org.antlr.runtime.CommonToken;
 import org.jetbrains.annotations.Nullable;
-import org.jf.smali.smaliFlexLexer;
-import org.jf.smali.smaliParser;
+import com.android.tools.smali.smali.smaliFlexLexer;
+import com.android.tools.smali.smali.smaliParser;
 
 import java.io.StringReader;
 

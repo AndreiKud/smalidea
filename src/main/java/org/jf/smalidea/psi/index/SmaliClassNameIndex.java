@@ -48,4 +48,9 @@ public class SmaliClassNameIndex extends StringStubIndexExtension<SmaliClass> {
     @NotNull @Override public StubIndexKey<String, SmaliClass> getKey() {
         return KEY;
     }
+
+    @Override
+    public boolean traceKeyHashToVirtualFileMapping() {
+        return true;
+    }
 }

@@ -35,7 +35,7 @@ import com.intellij.usages.impl.rules.UsageType;
 
 public class FieldUsageTypeTest extends UsageTypeTest {
     public FieldUsageTypeTest() {
-        super(new SmaliUsageTypeProvider());
+        super(SmaliUsageTypeProvider::new);
     }
 
     public void testFieldUsageTypes() throws Exception {

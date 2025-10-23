@@ -38,12 +38,13 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiReference;
 import com.intellij.psi.search.LocalSearchScope;
 import com.intellij.psi.search.searches.ReferencesSearch;
-import com.intellij.testFramework.PsiTestCase;
+import com.intellij.testFramework.JavaPsiTestCase;
 import org.junit.Assert;
 
+import java.util.Comparator;
 import java.util.List;
 
-public class HighlightLocalClassUsagesTest extends PsiTestCase {
+public class HighlightLocalClassUsagesTest extends JavaPsiTestCase {
     public void testHighlightLocalClassUsage() throws Exception {
         String fileText = "" +
                 ".class public Lbl<ref>arg; .super Ljava/lang/Object;\n" +
@@ -62,13 +63,15 @@ public class HighlightLocalClassUsagesTest extends PsiTestCase {
         if (reference != null) {
             target = reference.resolve();
         } else {
-            target = TargetElementUtilBase.getInstance().getNamedElement(
-                    file.findElementAt(refIndex), 0);
+            target = TargetElementUtilBase.getNamedElement(file.findElementAt(refIndex), 0);
         }
 
         final LocalSearchScope scope = new LocalSearchScope(file);
-
-        List<PsiReference> refs = Lists.newArrayList(ReferencesSearch.search(target, scope).findAll());
+        List<PsiReference> refs = Lists.newArrayList(ReferencesSearch.search(target, scope)
+                .findAll()
+                .stream()
+                .sorted(Comparator.comparingInt(ref -> ref.getElement().getTextOffset()))
+                .toList());
         Assert.assertEquals(2, refs.size());
 
         Assert.assertEquals(file.findElementAt(refIndex).getTextOffset(), refs.get(0).getElement().getTextOffset());

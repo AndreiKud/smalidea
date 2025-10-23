@@ -44,7 +44,7 @@ import com.intellij.util.IncorrectOperationException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jf.dexlib2.AccessFlags;
+import com.android.tools.smali.dexlib2.AccessFlags;
 import org.jf.smalidea.SmaliTokens;
 import org.jf.smalidea.psi.iface.SmaliModifierListOwner;
 import org.jf.smalidea.psi.stub.SmaliModifierListStub;

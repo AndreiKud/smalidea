@@ -44,13 +44,14 @@ import com.intellij.debugger.engine.managerThread.DebuggerManagerThread;
 import com.intellij.debugger.requests.RequestManager;
 import com.intellij.execution.ExecutionResult;
 import com.intellij.execution.process.ProcessHandler;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Key;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
 import com.sun.jdi.*;
 import org.jetbrains.annotations.NotNull;
-import org.jf.dexlib2.Opcode;
+import com.android.tools.smali.dexlib2.Opcode;
 import org.jf.smalidea.debugging.SmaliPositionManager;
 import org.jf.smalidea.psi.impl.SmaliInstruction;
 import org.junit.Assert;
@@ -175,6 +176,7 @@ public class SmaliPositionManagerTest extends LightCodeInsightFixtureTestCase {
         @NotNull @Override public GlobalSearchScope getSearchScope() { return null; }
         @Override public void printToConsole(String text) {}
         @Override public ProcessHandler getProcessHandler() { return null; }
+        @Override public void addDebugProcessListener(DebugProcessListener debugProcessListener, Disposable disposable) {}
     }
 
     private static class MockReferenceType implements ReferenceType {

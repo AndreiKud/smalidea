@@ -36,5 +36,5 @@ import com.intellij.openapi.util.IconLoader;
 import javax.swing.*;
 
 public class SmaliIcons {
-    public static final Icon SmaliIcon = IconLoader.getIcon("/icons/smali.png");
+    public static final Icon SmaliIcon = IconLoader.getIcon("/icons/smali.svg", SmaliIcons.class);
 }

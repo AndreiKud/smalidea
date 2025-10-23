@@ -48,7 +48,7 @@ public class SmaliParser implements PsiParser {
         PsiBuilder.Marker classMarker = builder.mark();
 
         PsiBuilderTokenStream tokenStream = new PsiBuilderTokenStream(builder);
-        smalideaParser parser = new smalideaParser(tokenStream);
+        org.jf.smalidea.smalideaParser parser = new org.jf.smalidea.smalideaParser(tokenStream);
         parser.setPsiBuilder(builder);
         try {
             parser.smali_file();

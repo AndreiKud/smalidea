@@ -55,8 +55,8 @@ import com.sun.jdi.Location;
 import com.sun.jdi.Method;
 import com.sun.jdi.Value;
 import com.sun.jdi.VirtualMachine;
-import org.jf.dexlib2.analysis.AnalyzedInstruction;
-import org.jf.dexlib2.analysis.RegisterType;
+import com.android.tools.smali.dexlib2.analysis.AnalyzedInstruction;
+import com.android.tools.smali.dexlib2.analysis.RegisterType;
 import org.jf.smalidea.SmaliFileType;
 import org.jf.smalidea.SmaliLanguage;
 import org.jf.smalidea.debugging.value.LazyValue;
@@ -75,7 +75,7 @@ public class SmaliCodeFragmentFactory extends DefaultCodeFragmentFactory {
     @Override
     public JavaCodeFragment createCodeFragment(TextWithImports item, PsiElement context, Project project) {
         context = wrapContext(project, context);
-        JavaCodeFragment fragment = super.createCodeFragment(item, context, project);
+        JavaCodeFragment fragment = super.createPsiCodeFragment(item, context, project);
         List<LazyValue> lazyValues = context.getUserData(SMALI_LAZY_VALUES_KEY);
         if (lazyValues != null) {
             fragment.putUserData(SMALI_LAZY_VALUES_KEY, lazyValues);
@@ -243,7 +243,7 @@ public class SmaliCodeFragmentFactory extends DefaultCodeFragmentFactory {
         final TextWithImportsImpl textWithImports = new TextWithImportsImpl(CodeFragmentKind.CODE_BLOCK,
                 variablesText.toString(), "", getFileType());
 
-        final JavaCodeFragment codeFragment = super.createCodeFragment(textWithImports, originalContext, project);
+        final JavaCodeFragment codeFragment = super.createPsiCodeFragment(textWithImports, originalContext, project);
 
         codeFragment.accept(new JavaRecursiveElementVisitor() {
             @Override

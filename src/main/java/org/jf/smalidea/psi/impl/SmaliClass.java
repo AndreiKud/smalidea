@@ -442,4 +442,17 @@ public class SmaliClass extends SmaliStubBasedPsiElement<SmaliClassStub> impleme
         int basicClassKind = ElementPresentationUtil.getBasicClassKind(this);
         return IconUtils.getElementIcon(this, ElementPresentationUtil.getClassIconOfKind(this, basicClassKind));
     }
+
+    @Override
+    public int getTextOffset() {
+        SmaliClassStatement statement = findChildByClass(SmaliClassStatement.class);
+        if (statement == null) {
+            return super.getTextOffset();
+        }
+        SmaliClassTypeElement descriptor = statement.getNameElement();
+        if (descriptor == null) {
+            return super.getTextOffset();
+        }
+        return descriptor.getTextOffset();
+    }
 }

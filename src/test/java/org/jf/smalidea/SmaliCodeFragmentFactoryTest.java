@@ -32,7 +32,7 @@
 package org.jf.smalidea;
 
 import com.google.common.collect.Sets;
-import com.intellij.codeInsight.CodeInsightTestCase;
+import com.intellij.codeInsight.JavaCodeInsightTestCase;
 import com.intellij.codeInsight.completion.CodeCompletionHandlerBase;
 import com.intellij.codeInsight.completion.CompletionType;
 import com.intellij.codeInsight.daemon.DaemonCodeAnalyzer;
@@ -60,7 +60,7 @@ import org.junit.Assert;
 import java.util.HashSet;
 import java.util.List;
 
-public class SmaliCodeFragmentFactoryTest extends CodeInsightTestCase {
+public class SmaliCodeFragmentFactoryTest extends JavaCodeInsightTestCase {
     private static final String completionTestClass =
             ".class public Lmy/pkg/blah; .super Ljava/lang/Object;\n" +
                     ".method public getRandomParentType(I)I\n" +

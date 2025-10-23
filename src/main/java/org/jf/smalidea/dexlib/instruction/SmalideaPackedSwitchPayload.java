@@ -32,9 +32,9 @@
 package org.jf.smalidea.dexlib.instruction;
 
 import com.google.common.collect.Lists;
-import org.jf.dexlib2.Opcode;
-import org.jf.dexlib2.iface.instruction.SwitchElement;
-import org.jf.dexlib2.iface.instruction.formats.PackedSwitchPayload;
+import com.android.tools.smali.dexlib2.Opcode;
+import com.android.tools.smali.dexlib2.iface.instruction.SwitchElement;
+import com.android.tools.smali.dexlib2.iface.instruction.formats.PackedSwitchPayload;
 import org.jf.smalidea.psi.impl.*;
 import org.jf.smalidea.util.InstructionUtils;
 

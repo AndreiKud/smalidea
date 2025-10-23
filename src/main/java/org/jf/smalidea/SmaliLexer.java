@@ -36,9 +36,9 @@ import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.IElementType;
 import org.antlr.runtime.CommonToken;
 import org.jetbrains.annotations.NotNull;
-import org.jf.smali.smaliFlexLexer;
-import org.jf.smali.smaliParser;
-import org.jf.smali.util.BlankReader;
+import com.android.tools.smali.smali.smaliFlexLexer;
+import com.android.tools.smali.smali.smaliParser;
+import com.android.tools.smali.smali.util.BlankReader;
 
 public class SmaliLexer extends LexerBase {
     // TODO: need to plumb in the api level somehow

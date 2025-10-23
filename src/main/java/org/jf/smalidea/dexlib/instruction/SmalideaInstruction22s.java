@@ -31,7 +31,7 @@
 
 package org.jf.smalidea.dexlib.instruction;
 
-import org.jf.dexlib2.iface.instruction.formats.Instruction22s;
+import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction22s;
 import org.jf.smalidea.psi.impl.SmaliInstruction;
 
 import javax.annotation.Nonnull;

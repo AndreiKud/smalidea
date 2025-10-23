@@ -35,7 +35,7 @@ import com.google.common.collect.Maps;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiReference;
 import com.intellij.psi.impl.source.resolve.reference.impl.PsiMultiReference;
-import com.intellij.testFramework.PsiTestCase;
+import com.intellij.testFramework.JavaPsiTestCase;
 import com.intellij.usages.impl.rules.UsageType;
 import com.intellij.usages.impl.rules.UsageTypeProvider;
 import org.jetbrains.annotations.NotNull;
@@ -46,15 +46,15 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class UsageTypeTest extends PsiTestCase {
+public abstract class UsageTypeTest extends JavaPsiTestCase {
     // e.g. <ref:1>, <ref:1234>, etc.
     private static final Pattern REF_PATTERN = Pattern.compile("(<ref:([0-9]+)>)");
 
     @NotNull
-    private final UsageTypeProvider usageTypeProvider;
+    private final UsageTypeProviderFactory usageTypeProviderFactory;
 
-    public UsageTypeTest(@NotNull UsageTypeProvider usageTypeProvider) {
-        this.usageTypeProvider = usageTypeProvider;
+    public UsageTypeTest(@NotNull UsageTypeProviderFactory usageTypeProviderFactory) {
+        this.usageTypeProviderFactory = usageTypeProviderFactory;
     }
 
     protected void doTest(@NotNull String fileName, @NotNull String text, @NotNull Object... expectedUsageTypes)
@@ -69,6 +69,7 @@ public abstract class UsageTypeTest extends PsiTestCase {
         PsiFile psiFile = createFile(fileName, REF_PATTERN.matcher(text).replaceAll(""));
         Map<Integer, Integer> refIndexMap = getRefIndexes(text);
 
+        UsageTypeProvider usageTypeProvider = usageTypeProviderFactory.create();
         for (Map.Entry<Integer, Integer> entry: refIndexMap.entrySet()) {
             int refId = entry.getKey();
             int index = entry.getValue();

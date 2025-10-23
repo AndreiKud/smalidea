@@ -35,7 +35,7 @@ import com.google.common.collect.Maps;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
-import org.jf.smali.smaliParser;
+import com.android.tools.smali.smali.smaliParser;
 import org.jf.smalidea.highlighter.SmaliHighlightingColors;
 
 import java.lang.reflect.Field;

@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>org.jf.smalidea</id>
     <name>Smalidea</name>
-    <version>0.06</version>
+    <version>0.08</version>
     <vendor email="jesusfreke@jesusfreke.com" url="http://smali.org">JesusFreke</vendor>
 
     <description><![CDATA[
@@ -37,6 +37,7 @@
         <usageTypeProvider implementation="org.jf.smalidea.findUsages.SmaliUsageTypeProvider"/>
         <errorHandler implementation="org.jf.smalidea.errorReporting.ErrorReporter"/>
         <todoIndexer filetype="smali" implementationClass="org.jf.smalidea.highlighter.SmaliTodoIndexer"/>
+        <findUsagesHandlerFactory implementation="org.jf.smalidea.findUsages.SmaliFindUsagesHandlerFactory" />
 
         <!-- The "Smali" (with a capital S) language is the one registered by Android Studio's smali plugin.
              This substitutor ensures that smalidea's "smali" (lowercase s) language is used instead of AS's "Smali"

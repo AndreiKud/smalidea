@@ -30,7 +30,7 @@ import com.intellij.psi.stubs.StubTree;
 import com.intellij.testFramework.LightVirtualFile;
 import com.intellij.testFramework.TestDataFile;
 import com.intellij.testFramework.UsefulTestCase;
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -46,7 +46,7 @@ import java.util.Set;
  * This was originally based on com.intellij.testFramework.ParsingTestCase, but was modified
  * to use the LightCodeInsightFixtureTestCase base class, which provides more functionality
  */
-public abstract class LightCodeInsightParsingTestCase extends LightCodeInsightFixtureTestCase {
+public abstract class LightCodeInsightParsingTestCase extends LightJavaCodeInsightFixtureTestCase {
     protected final String myFilePrefix = "";
     protected final String myFileExt;
     @NonNls protected final String myFullDataPath;
@@ -76,8 +76,8 @@ public abstract class LightCodeInsightParsingTestCase extends LightCodeInsightFi
         return false;
     }
 
-    protected boolean skipSpaces() {
-        return false;
+    protected boolean showWhitespaces() {
+        return true;
     }
 
     protected boolean checkAllPsiRoots() {
@@ -110,7 +110,7 @@ public abstract class LightCodeInsightParsingTestCase extends LightCodeInsightFi
                 checkResult(name, f);
             }
             else{
-                toParseTreeText(f, skipSpaces(), includeRanges());
+                toParseTreeText(f, showWhitespaces(), includeRanges());
             }
         }
         catch (IOException e) {
@@ -153,27 +153,27 @@ public abstract class LightCodeInsightParsingTestCase extends LightCodeInsightFi
     }
 
     protected void checkResult(@NonNls @TestDataFile String targetDataName, final PsiFile file) throws IOException {
-        doCheckResult(myFullDataPath, file, checkAllPsiRoots(), targetDataName, skipSpaces(), includeRanges());
+        doCheckResult(myFullDataPath, file, checkAllPsiRoots(), targetDataName, showWhitespaces(), includeRanges());
     }
 
     public static void doCheckResult(String myFullDataPath,
                                      PsiFile file,
                                      boolean checkAllPsiRoots,
                                      String targetDataName,
-                                     boolean skipSpaces,
+                                     boolean showWhitespaces,
                                      boolean printRanges) throws IOException {
         FileViewProvider provider = file.getViewProvider();
         Set<Language> languages = provider.getLanguages();
 
         if (!checkAllPsiRoots || languages.size() == 1) {
-            doCheckResult(myFullDataPath, targetDataName + ".txt", toParseTreeText(file, skipSpaces, printRanges).trim());
+            doCheckResult(myFullDataPath, targetDataName + ".txt", toParseTreeText(file, showWhitespaces, printRanges).trim());
             return;
         }
 
         for (Language language : languages) {
             PsiFile root = provider.getPsi(language);
             String expectedName = targetDataName + "." + language.getID() + ".txt";
-            doCheckResult(myFullDataPath, expectedName, toParseTreeText(root, skipSpaces, printRanges).trim());
+            doCheckResult(myFullDataPath, expectedName, toParseTreeText(root, showWhitespaces, printRanges).trim());
         }
     }
 
@@ -186,8 +186,8 @@ public abstract class LightCodeInsightParsingTestCase extends LightCodeInsightFi
         UsefulTestCase.assertSameLinesWithFile(expectedFileName, text);
     }
 
-    protected static String toParseTreeText(final PsiElement file,  boolean skipSpaces, boolean printRanges) {
-        return DebugUtil.psiToString(file, skipSpaces, printRanges);
+    protected static String toParseTreeText(final PsiElement file,  boolean showWhitespaces, boolean printRanges) {
+        return DebugUtil.psiToString(file, showWhitespaces, printRanges);
     }
 
     protected String loadFile(@NonNls @TestDataFile String name) throws IOException {

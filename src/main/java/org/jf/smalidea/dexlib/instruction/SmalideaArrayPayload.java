@@ -33,7 +33,7 @@ package org.jf.smalidea.dexlib.instruction;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
-import org.jf.dexlib2.iface.instruction.formats.ArrayPayload;
+import com.android.tools.smali.dexlib2.iface.instruction.formats.ArrayPayload;
 import org.jf.smalidea.psi.impl.SmaliArrayDataElement;
 import org.jf.smalidea.psi.impl.SmaliInstruction;
 

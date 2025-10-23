@@ -169,7 +169,9 @@ public class NameUtils {
 
     @Nullable
     public static PsiClass resolveSmaliType(@NotNull PsiElement element, @NotNull String smaliType) {
-        GlobalSearchScope scope = ResolveScopeManager.getElementResolveScope(element);
+        // UseScope as a fallback when smali files are not marked as sources
+        GlobalSearchScope scope = ResolveScopeManager.getElementResolveScope(element)
+                .union(ResolveScopeManager.getElementUseScope(element));
         return resolveSmaliType(element.getProject(), scope, smaliType);
     }
 

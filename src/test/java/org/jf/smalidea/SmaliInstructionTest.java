@@ -33,7 +33,7 @@ package org.jf.smalidea;
 
 import com.intellij.psi.PsiElement;
 import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
-import org.jf.dexlib2.Opcode;
+import com.android.tools.smali.dexlib2.Opcode;
 import org.jf.smalidea.psi.impl.SmaliFile;
 import org.jf.smalidea.psi.impl.SmaliInstruction;
 import org.junit.Assert;

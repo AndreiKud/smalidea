@@ -34,7 +34,7 @@ package org.jf.smalidea;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.psi.PsiModifierListOwner;
 import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
-import org.jf.dexlib2.AccessFlags;
+import com.android.tools.smali.dexlib2.AccessFlags;
 import org.jf.smalidea.psi.impl.SmaliAnnotation;
 import org.jf.smalidea.psi.impl.SmaliClass;
 import org.jf.smalidea.psi.impl.SmaliFile;

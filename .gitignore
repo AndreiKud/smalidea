@@ -4,3 +4,8 @@ test-system
 
 # Ignore Gradle project-specific cache directory
 .gradle
+
+.idea
+.intellijPlatform
+
+local.properties

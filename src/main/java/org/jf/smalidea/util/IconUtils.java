@@ -2,7 +2,7 @@ package org.jf.smalidea.util;
 
 import com.intellij.ui.RowIcon;
 import com.intellij.util.PlatformIcons;
-import org.jf.dexlib2.AccessFlags;
+import com.android.tools.smali.dexlib2.AccessFlags;
 import org.jf.smalidea.psi.iface.SmaliModifierListOwner;
 import org.jf.smalidea.psi.impl.SmaliModifierList;
 

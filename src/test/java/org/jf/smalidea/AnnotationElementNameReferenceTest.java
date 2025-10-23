@@ -32,10 +32,10 @@
 package org.jf.smalidea;
 
 import com.intellij.psi.*;
-import com.intellij.testFramework.ResolveTestCase;
+import com.intellij.testFramework.JavaResolveTestCase;
 import org.junit.Assert;
 
-public class AnnotationElementNameReferenceTest extends ResolveTestCase {
+public class AnnotationElementNameReferenceTest extends JavaResolveTestCase {
     public void testSmaliReferenceFromSmali() throws Exception {
         createFile("AnnotationWithValues.smali", "" +
                 ".class public abstract interface annotation LAnnotationWithValues;\n" +

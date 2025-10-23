@@ -40,8 +40,8 @@ import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenSource;
 import org.antlr.runtime.TokenStream;
 import org.jetbrains.annotations.Nullable;
-import org.jf.smali.InvalidToken;
-import org.jf.smali.smaliParser;
+import com.android.tools.smali.smali.InvalidToken;
+import com.android.tools.smali.smali.smaliParser;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;

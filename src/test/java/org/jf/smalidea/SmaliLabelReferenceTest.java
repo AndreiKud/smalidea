@@ -31,14 +31,14 @@
 
 package org.jf.smalidea;
 
-import com.intellij.testFramework.ResolveTestCase;
-import org.jf.dexlib2.Opcode;
+import com.intellij.testFramework.JavaResolveTestCase;
+import com.android.tools.smali.dexlib2.Opcode;
 import org.jf.smalidea.psi.impl.SmaliInstruction;
 import org.jf.smalidea.psi.impl.SmaliLabel;
 import org.jf.smalidea.psi.impl.SmaliLabelReference;
 import org.junit.Assert;
 
-public class SmaliLabelReferenceTest extends ResolveTestCase {
+public class SmaliLabelReferenceTest extends JavaResolveTestCase {
 
     public void testLabelReference() throws Exception {
         String text =

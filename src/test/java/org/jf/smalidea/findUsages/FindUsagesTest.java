@@ -41,7 +41,7 @@ import com.intellij.find.impl.FindManagerImpl;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiReference;
-import com.intellij.testFramework.PsiTestCase;
+import com.intellij.testFramework.JavaPsiTestCase;
 import com.intellij.usageView.UsageInfo;
 import com.intellij.usages.PsiElementUsageTarget;
 import com.intellij.usages.UsageTarget;
@@ -55,7 +55,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class FindUsagesTest extends PsiTestCase {
+public abstract class FindUsagesTest extends JavaPsiTestCase {
     public static final String USAGE_TAG = "<usage>";
     public static final String REF_TAG = "<ref>";
 
@@ -129,7 +129,7 @@ public abstract class FindUsagesTest extends PsiTestCase {
                     if (reference != null) {
                         targetElement = reference.resolve();
                     } else {
-                        targetElement = TargetElementUtilBase.getInstance().getNamedElement(
+                        targetElement = TargetElementUtilBase.getNamedElement(
                                 testFile.psiFile.findElementAt(refIndex), 0);
                     }
                 }

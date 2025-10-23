@@ -40,12 +40,12 @@ import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiMethod;
 import com.intellij.psi.PsiModifierList;
-import org.jf.dexlib2.AccessFlags;
-import org.jf.dexlib2.base.reference.BaseTypeReference;
-import org.jf.dexlib2.iface.Annotation;
-import org.jf.dexlib2.iface.ClassDef;
-import org.jf.dexlib2.iface.Field;
-import org.jf.dexlib2.iface.Method;
+import com.android.tools.smali.dexlib2.AccessFlags;
+import com.android.tools.smali.dexlib2.base.reference.BaseTypeReference;
+import com.android.tools.smali.dexlib2.iface.Annotation;
+import com.android.tools.smali.dexlib2.iface.ClassDef;
+import com.android.tools.smali.dexlib2.iface.Field;
+import com.android.tools.smali.dexlib2.iface.Method;
 import org.jf.smalidea.util.NameUtils;
 
 import javax.annotation.Nonnull;

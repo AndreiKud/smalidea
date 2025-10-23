@@ -35,8 +35,8 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.impl.ResolveScopeManager;
-import org.jf.dexlib2.analysis.ClassProvider;
-import org.jf.dexlib2.iface.ClassDef;
+import com.android.tools.smali.dexlib2.analysis.ClassProvider;
+import com.android.tools.smali.dexlib2.iface.ClassDef;
 import org.jf.smalidea.dexlib.SmalideaClassDef;
 import org.jf.smalidea.util.NameUtils;
 

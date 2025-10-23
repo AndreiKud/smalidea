@@ -34,19 +34,27 @@ package org.jf.smalidea.findUsages;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.QueryExecutorBase;
 import com.intellij.openapi.progress.EmptyProgressIndicator;
+import com.intellij.openapi.progress.ProgressManager;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Computable;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiReference;
 import com.intellij.psi.impl.search.LowLevelSearchUtil;
 import com.intellij.psi.search.*;
 import com.intellij.psi.search.searches.ReferencesSearch;
 import com.intellij.psi.search.searches.ReferencesSearch.SearchParameters;
+import com.intellij.psi.util.PsiUtilCore;
 import com.intellij.util.Processor;
 import com.intellij.util.text.StringSearcher;
 import org.jetbrains.annotations.NotNull;
+import org.jf.smalidea.SmaliFileType;
 import org.jf.smalidea.util.NameUtils;
+
+import java.util.Collection;
 
 public class SmaliClassReferenceSearcher extends QueryExecutorBase<PsiReference, ReferencesSearch.SearchParameters> {
     @Override public void processQuery(
@@ -56,6 +64,8 @@ public class SmaliClassReferenceSearcher extends QueryExecutorBase<PsiReference,
         if (!(element instanceof PsiClass)) {
             return;
         }
+        final Project project = PsiUtilCore.getProjectInReadAction(element);
+        final SingleTargetRequestResultProcessor processor = new SingleTargetRequestResultProcessor(element);
 
         String smaliType = ApplicationManager.getApplication().runReadAction(
                 new Computable<String>() {
@@ -72,8 +82,6 @@ public class SmaliClassReferenceSearcher extends QueryExecutorBase<PsiReference,
         }
 
         final StringSearcher stringSearcher = new StringSearcher(smaliType, true, true, false, false);
-
-        final SingleTargetRequestResultProcessor processor = new SingleTargetRequestResultProcessor(element);
 
         SearchScope querySearchScope = ApplicationManager.getApplication().runReadAction(
                 new Computable<SearchScope>() {
@@ -99,23 +107,18 @@ public class SmaliClassReferenceSearcher extends QueryExecutorBase<PsiReference,
                 });
             }
         } else if (querySearchScope instanceof GlobalSearchScope) {
-            PsiSearchHelper helper = PsiSearchHelper.SERVICE.getInstance(element.getProject());
-            // TODO: limit search scope to only smali files. See, e.g. AnnotatedPackagesSearcher.PackageInfoFilesOnly
-            helper.processAllFilesWithWord(smaliType, (GlobalSearchScope)querySearchScope,
-                    new Processor<PsiFile>() {
-                        @Override
-                        public boolean process(PsiFile file) {
-                            LowLevelSearchUtil.processElementsContainingWordInElement(
-                                    new TextOccurenceProcessor() {
-                                        @Override public boolean execute(
-                                                @NotNull PsiElement element, int offsetInElement) {
-                                            return processor.processTextOccurrence(element, offsetInElement, consumer);
-                                        }
-                                    },
-                                    file, stringSearcher, true, new EmptyProgressIndicator());
-                            return true;
-                        }
-                    }, true);
+            ApplicationManager.getApplication().runReadAction(() -> {
+                Collection<VirtualFile> smaliVirtualFiles = FileTypeIndex.getFiles(SmaliFileType.INSTANCE, (GlobalSearchScope)querySearchScope);
+                for (VirtualFile vf : smaliVirtualFiles) {
+                    ProgressManager.checkCanceled();
+                    PsiFile psiFile = PsiManager.getInstance(project).findFile(vf);
+                    if (psiFile != null) {
+                        LowLevelSearchUtil.processElementsContainingWordInElement((psiElement, offsetInElement) -> {
+                            return processor.processTextOccurrence(psiElement, offsetInElement, consumer);
+                        }, psiFile, stringSearcher, true, new EmptyProgressIndicator());
+                    }
+                }
+            });
         } else {
             assert false;
             return;

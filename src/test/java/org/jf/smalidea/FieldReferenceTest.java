@@ -35,11 +35,11 @@ import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.projectRoots.impl.JavaAwareProjectJdkTableImpl;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiReference;
-import com.intellij.testFramework.ResolveTestCase;
+import com.intellij.testFramework.JavaResolveTestCase;
 import org.jf.smalidea.psi.impl.SmaliFieldReference;
 import org.junit.Assert;
 
-public class FieldReferenceTest extends ResolveTestCase {
+public class FieldReferenceTest extends JavaResolveTestCase {
     /**
      * Test a reference to a java field from a smali class
      */
