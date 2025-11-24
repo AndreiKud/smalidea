@@ -1,3 +1,9 @@
+# Fork modifications
+* Release 0.08
+   * Fix compatibility with modern IDEA's API.
+
+# Original README
+
 smalidea is a smali language plugin for [IntelliJ IDEA](https://www.jetbrains.com/idea/)/[Android Studio](http://developer.android.com/sdk/index.html)
 
 ### [DOWNLOAD](https://bitbucket.org/JesusFreke/smalidea/downloads) ###
