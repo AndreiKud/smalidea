@@ -31,13 +31,17 @@
 
 package org.jf.smalidea.findUsages;
 
-import com.intellij.psi.*;
+import com.android.tools.smali.dexlib2.Opcode;
+import com.intellij.psi.PsiClass;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiField;
+import com.intellij.psi.PsiMethod;
+import com.intellij.psi.PsiReference;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.usages.impl.rules.UsageType;
 import com.intellij.usages.impl.rules.UsageTypeProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.android.tools.smali.dexlib2.Opcode;
 import org.jf.smalidea.SmaliTokens;
 import org.jf.smalidea.psi.impl.*;
 

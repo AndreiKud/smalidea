@@ -31,12 +31,16 @@
 
 package org.jf.smalidea.dexlib.instruction;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
 import com.android.tools.smali.dexlib2.Opcode;
 import com.android.tools.smali.dexlib2.iface.instruction.SwitchElement;
 import com.android.tools.smali.dexlib2.iface.instruction.formats.SparseSwitchPayload;
-import org.jf.smalidea.psi.impl.*;
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
+import org.jf.smalidea.psi.impl.SmaliInstruction;
+import org.jf.smalidea.psi.impl.SmaliLabel;
+import org.jf.smalidea.psi.impl.SmaliLabelReference;
+import org.jf.smalidea.psi.impl.SmaliMethod;
+import org.jf.smalidea.psi.impl.SmaliSparseSwitchElement;
 import org.jf.smalidea.util.InstructionUtils;
 
 import javax.annotation.Nonnull;

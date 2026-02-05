@@ -31,6 +31,9 @@
 
 package org.jf.smalidea.psi.impl;
 
+import com.android.tools.smali.dexlib2.analysis.AnalysisException;
+import com.android.tools.smali.dexlib2.analysis.ClassPath;
+import com.android.tools.smali.dexlib2.analysis.MethodAnalyzer;
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
 import com.google.common.collect.Maps;
@@ -43,16 +46,17 @@ import com.intellij.psi.PsiModifier.ModifierConstant;
 import com.intellij.psi.impl.PsiImplUtil;
 import com.intellij.psi.impl.PsiSuperMethodImplUtil;
 import com.intellij.psi.javadoc.PsiDocComment;
-import com.intellij.psi.util.*;
+import com.intellij.psi.util.MethodSignature;
+import com.intellij.psi.util.MethodSignatureBackedByPsiMethod;
+import com.intellij.psi.util.PsiFormatUtil;
+import com.intellij.psi.util.PsiFormatUtilBase;
+import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.IncorrectOperationException;
 import com.intellij.util.PlatformIcons;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.android.tools.smali.dexlib2.analysis.AnalysisException;
-import com.android.tools.smali.dexlib2.analysis.ClassPath;
-import com.android.tools.smali.dexlib2.analysis.MethodAnalyzer;
 import org.jf.smalidea.dexlib.SmalideaMethod;
 import org.jf.smalidea.dexlib.analysis.SmalideaClassProvider;
 import org.jf.smalidea.psi.SmaliElementTypes;

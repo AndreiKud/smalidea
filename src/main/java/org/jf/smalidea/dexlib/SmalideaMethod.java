@@ -31,6 +31,17 @@
 
 package org.jf.smalidea.dexlib;
 
+import com.android.tools.smali.dexlib2.AccessFlags;
+import com.android.tools.smali.dexlib2.HiddenApiRestriction;
+import com.android.tools.smali.dexlib2.base.reference.BaseMethodReference;
+import com.android.tools.smali.dexlib2.iface.Annotation;
+import com.android.tools.smali.dexlib2.iface.ExceptionHandler;
+import com.android.tools.smali.dexlib2.iface.Method;
+import com.android.tools.smali.dexlib2.iface.MethodImplementation;
+import com.android.tools.smali.dexlib2.iface.MethodParameter;
+import com.android.tools.smali.dexlib2.iface.TryBlock;
+import com.android.tools.smali.dexlib2.iface.debug.DebugItem;
+import com.android.tools.smali.dexlib2.iface.instruction.Instruction;
 import com.google.common.base.Function;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
@@ -41,12 +52,6 @@ import com.intellij.psi.PsiModifierList;
 import com.intellij.psi.PsiParameter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.android.tools.smali.dexlib2.AccessFlags;
-import com.android.tools.smali.dexlib2.HiddenApiRestriction;
-import com.android.tools.smali.dexlib2.base.reference.BaseMethodReference;
-import com.android.tools.smali.dexlib2.iface.*;
-import com.android.tools.smali.dexlib2.iface.debug.DebugItem;
-import com.android.tools.smali.dexlib2.iface.instruction.Instruction;
 import org.jf.smalidea.dexlib.instruction.SmalideaInstruction;
 import org.jf.smalidea.psi.impl.SmaliCatchStatement;
 import org.jf.smalidea.psi.impl.SmaliInstruction;

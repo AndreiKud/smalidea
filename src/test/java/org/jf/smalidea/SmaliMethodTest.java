@@ -31,17 +31,17 @@
 
 package org.jf.smalidea;
 
+import com.android.tools.smali.dexlib2.Opcode;
 import com.intellij.debugger.SourcePosition;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiPrimitiveType;
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
-import com.android.tools.smali.dexlib2.Opcode;
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import org.jf.smalidea.psi.impl.*;
 import org.junit.Assert;
 
 import java.util.List;
 
-public class SmaliMethodTest extends LightCodeInsightFixtureTestCase {
+public class SmaliMethodTest extends LightJavaCodeInsightFixtureTestCase {
     public void testMethodRegisters() {
         String text =
                 ".class public Lmy/pkg/blah; .super Ljava/lang/Object;\n" +

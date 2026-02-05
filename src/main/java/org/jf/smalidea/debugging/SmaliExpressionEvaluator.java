@@ -60,10 +60,6 @@ public class SmaliExpressionEvaluator implements ExpressionEvaluator {
         return evaluator.evaluate(context);
     }
 
-    @Override public Value getValue() {
-        return evaluator.getValue();
-    }
-
     @Override public Modifier getModifier() {
         return evaluator.getModifier();
     }

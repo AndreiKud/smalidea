@@ -31,6 +31,7 @@
 
 package org.jf.smalidea;
 
+import com.android.tools.smali.dexlib2.Opcode;
 import com.google.common.collect.Lists;
 import com.intellij.debugger.NoDataException;
 import com.intellij.debugger.PositionManager;
@@ -48,10 +49,9 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Key;
 import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import com.sun.jdi.*;
 import org.jetbrains.annotations.NotNull;
-import com.android.tools.smali.dexlib2.Opcode;
 import org.jf.smalidea.debugging.SmaliPositionManager;
 import org.jf.smalidea.psi.impl.SmaliInstruction;
 import org.junit.Assert;
@@ -59,7 +59,7 @@ import org.junit.Assert;
 import java.util.List;
 import java.util.Map;
 
-public class SmaliPositionManagerTest extends LightCodeInsightFixtureTestCase {
+public class SmaliPositionManagerTest extends LightJavaCodeInsightFixtureTestCase {
     private static final String testClass =
             "\n\n.class public Lmy/pkg/blah; .super Ljava/lang/Object;\n" +
                     ".method public getRandomParentType(I)I\n" +

@@ -31,9 +31,9 @@
 
 package org.jf.smalidea.util;
 
+import com.android.tools.smali.dexlib2.Opcode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.android.tools.smali.dexlib2.Opcode;
 import org.jf.smalidea.psi.impl.SmaliInstruction;
 import org.jf.smalidea.psi.impl.SmaliLabel;
 import org.jf.smalidea.psi.impl.SmaliLabelReference;

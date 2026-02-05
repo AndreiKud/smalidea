@@ -31,11 +31,11 @@
 
 package org.jf.smalidea;
 
+import com.android.tools.smali.smali.smaliParser;
 import com.google.common.collect.Maps;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
-import com.android.tools.smali.smali.smaliParser;
 import org.jf.smalidea.highlighter.SmaliHighlightingColors;
 
 import java.lang.reflect.Field;

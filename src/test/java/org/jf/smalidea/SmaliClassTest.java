@@ -33,7 +33,6 @@ package org.jf.smalidea;
 
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.impl.JavaAwareProjectJdkTableImpl;
 import com.intellij.openapi.roots.ContentEntry;
 import com.intellij.openapi.roots.LanguageLevelModuleExtension;
 import com.intellij.openapi.roots.ModifiableRootModel;
@@ -42,15 +41,16 @@ import com.intellij.psi.JavaPsiFacade;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiClassType;
 import com.intellij.psi.PsiElementFactory;
+import com.intellij.testFramework.IdeaTestUtil;
 import com.intellij.testFramework.LightProjectDescriptor;
 import com.intellij.testFramework.fixtures.DefaultLightProjectDescriptor;
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import org.jetbrains.annotations.NotNull;
 import org.jf.smalidea.psi.impl.SmaliClass;
 import org.jf.smalidea.psi.impl.SmaliFile;
 import org.junit.Assert;
 
-public class SmaliClassTest extends LightCodeInsightFixtureTestCase {
+public class SmaliClassTest extends LightJavaCodeInsightFixtureTestCase {
     public void testName() {
         SmaliFile file = (SmaliFile)myFixture.addFileToProject("my/pkg/blah.smali",
                 ".class public Lmy/pkg/blah; .super Ljava/lang/Object;");
@@ -157,7 +157,7 @@ public class SmaliClassTest extends LightCodeInsightFixtureTestCase {
     @NotNull @Override protected LightProjectDescriptor getProjectDescriptor() {
         return new DefaultLightProjectDescriptor() {
             public Sdk getSdk() {
-                return JavaAwareProjectJdkTableImpl.getInstanceEx().getInternalJdk();
+                return IdeaTestUtil.getMockJdk21();
             }
 
             public void configureModule(Module module, ModifiableRootModel model, ContentEntry contentEntry) {

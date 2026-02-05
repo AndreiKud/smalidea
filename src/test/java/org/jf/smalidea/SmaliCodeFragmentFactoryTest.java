@@ -46,12 +46,12 @@ import com.intellij.openapi.editor.impl.EditorImpl;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.OpenFileDescriptor;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.impl.JavaAwareProjectJdkTableImpl;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.JavaCodeFragment;
 import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.impl.source.tree.java.PsiReferenceExpressionImpl;
+import com.intellij.testFramework.IdeaTestUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jf.smalidea.debugging.SmaliCodeFragmentFactory;
 import org.jf.smalidea.psi.impl.SmaliFile;
@@ -274,6 +274,6 @@ public class SmaliCodeFragmentFactoryTest extends JavaCodeInsightTestCase {
 
     @Override
     protected Sdk getTestProjectJdk() {
-        return JavaAwareProjectJdkTableImpl.getInstanceEx().getInternalJdk();
+        return IdeaTestUtil.getMockJdk21();
     }
 }

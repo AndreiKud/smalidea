@@ -20,7 +20,11 @@ import com.intellij.lang.Language;
 import com.intellij.openapi.fileEditor.impl.LoadTextUtil;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.CharsetToolkit;
-import com.intellij.psi.*;
+import com.intellij.psi.FileViewProvider;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiElementVisitor;
+import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiFileFactory;
 import com.intellij.psi.impl.DebugUtil;
 import com.intellij.psi.impl.PsiFileFactoryImpl;
 import com.intellij.psi.impl.source.PsiFileImpl;
@@ -44,7 +48,7 @@ import java.util.Set;
  * A test case for parsing tests.
  *
  * This was originally based on com.intellij.testFramework.ParsingTestCase, but was modified
- * to use the LightCodeInsightFixtureTestCase base class, which provides more functionality
+ * to use the LightJavaCodeInsightFixtureTestCase base class, which provides more functionality
  */
 public abstract class LightCodeInsightParsingTestCase extends LightJavaCodeInsightFixtureTestCase {
     protected final String myFilePrefix = "";

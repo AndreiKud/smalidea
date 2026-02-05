@@ -68,7 +68,7 @@ public class SmaliUsageTargetProvider implements UsageTargetProvider {
         if (node.getElementType() == SmaliTokens.PARAM_LIST_OR_ID_PRIMITIVE_TYPE) {
             PsiElement parent = element.getParent();
             if (parent instanceof SmaliMemberName) {
-                return new UsageTarget[] { new PsiElement2UsageTargetAdapter(parent.getParent()) };
+                return new UsageTarget[] { new PsiElement2UsageTargetAdapter(parent.getParent(), false) };
             }
         }
         return null;

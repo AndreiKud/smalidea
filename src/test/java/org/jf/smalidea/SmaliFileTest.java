@@ -31,12 +31,12 @@
 
 package org.jf.smalidea;
 
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import org.jf.smalidea.psi.impl.SmaliClass;
 import org.jf.smalidea.psi.impl.SmaliFile;
 import org.junit.Assert;
 
-public class SmaliFileTest extends LightCodeInsightFixtureTestCase {
+public class SmaliFileTest extends LightJavaCodeInsightFixtureTestCase {
     public void testFile() {
         SmaliFile file = (SmaliFile)myFixture.addFileToProject("my/pkg/blah.smali",
                 ".class public Lmy/pkg/blah; .super Ljava/lang/Object;");

@@ -31,8 +31,6 @@
 
 package org.jf.smalidea.dexlib;
 
-import com.google.common.collect.Lists;
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
 import com.android.tools.smali.dexlib2.AccessFlags;
 import com.android.tools.smali.dexlib2.Opcode;
 import com.android.tools.smali.dexlib2.iface.ExceptionHandler;
@@ -45,6 +43,8 @@ import com.android.tools.smali.dexlib2.iface.instruction.formats.*;
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference;
 import com.android.tools.smali.dexlib2.iface.reference.StringReference;
 import com.android.tools.smali.dexlib2.util.ReferenceUtil;
+import com.google.common.collect.Lists;
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import org.jf.smalidea.psi.impl.SmaliClass;
 import org.jf.smalidea.psi.impl.SmaliFile;
 import org.jf.smalidea.psi.impl.SmaliMethod;
@@ -52,7 +52,7 @@ import org.junit.Assert;
 
 import java.util.List;
 
-public class SmalideaMethodTest extends LightCodeInsightFixtureTestCase {
+public class SmalideaMethodTest extends LightJavaCodeInsightFixtureTestCase {
 
     public void testSmalideaMethod() {
         String text = ".class public Lmy/pkg/blah; .super Ljava/lang/Object;\n" +
