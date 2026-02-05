@@ -32,9 +32,11 @@
 package org.jf.smalidea.psi.impl;
 
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.*;
+import com.intellij.psi.PsiAnnotation;
+import com.intellij.psi.PsiAnnotationMemberValue;
+import com.intellij.psi.PsiAnnotationOwner;
+import com.intellij.psi.PsiJavaCodeReferenceElement;
 import com.intellij.psi.impl.PsiImplUtil;
-import com.intellij.psi.meta.PsiMetaData;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

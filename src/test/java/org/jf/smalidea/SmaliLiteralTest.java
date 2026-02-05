@@ -32,12 +32,12 @@
 package org.jf.smalidea;
 
 import com.intellij.psi.PsiElement;
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import org.jf.smalidea.psi.impl.SmaliFile;
 import org.jf.smalidea.psi.impl.SmaliLiteral;
 import org.junit.Assert;
 
-public class SmaliLiteralTest extends LightCodeInsightFixtureTestCase {
+public class SmaliLiteralTest extends LightJavaCodeInsightFixtureTestCase {
     private void doTest(long expectedValue, String literalValue) {
         String text =
                 ".class public Lmy/pkg/blah; .super Ljava/lang/Object;\n" +

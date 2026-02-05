@@ -32,7 +32,8 @@
 package org.jf.smalidea.psi.impl;
 
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.*;
+import com.intellij.psi.PsiType;
+import com.intellij.psi.PsiTypeElement;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jf.smalidea.psi.SmaliElementTypes;

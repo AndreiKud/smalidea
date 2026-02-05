@@ -31,14 +31,14 @@
 
 package org.jf.smalidea;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
 import com.android.tools.smali.dexlib2.Opcode;
+import com.intellij.psi.PsiElement;
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import org.jf.smalidea.psi.impl.SmaliFile;
 import org.jf.smalidea.psi.impl.SmaliInstruction;
 import org.junit.Assert;
 
-public class SmaliInstructionTest extends LightCodeInsightFixtureTestCase {
+public class SmaliInstructionTest extends LightJavaCodeInsightFixtureTestCase {
     public void testSingleInstruction() {
         String text =
                 ".class public Lmy/pkg/blah; .super Ljava/lang/Object;\n" +

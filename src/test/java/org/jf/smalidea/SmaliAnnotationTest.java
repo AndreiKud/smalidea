@@ -31,15 +31,20 @@
 
 package org.jf.smalidea;
 
-import com.intellij.psi.*;
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
+import com.intellij.psi.PsiAnnotation;
+import com.intellij.psi.PsiAnnotationMemberValue;
+import com.intellij.psi.PsiAnnotationOwner;
+import com.intellij.psi.PsiAnnotationParameterList;
+import com.intellij.psi.PsiField;
+import com.intellij.psi.PsiJavaCodeReferenceElement;
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import org.jf.smalidea.psi.impl.SmaliClass;
 import org.jf.smalidea.psi.impl.SmaliFile;
 import org.jf.smalidea.psi.impl.SmaliLiteral;
 import org.jf.smalidea.psi.impl.SmaliMethod;
 import org.junit.Assert;
 
-public class SmaliAnnotationTest extends LightCodeInsightFixtureTestCase {
+public class SmaliAnnotationTest extends LightJavaCodeInsightFixtureTestCase {
     // TODO: test default values
 
     public void testClassAnnotation() {

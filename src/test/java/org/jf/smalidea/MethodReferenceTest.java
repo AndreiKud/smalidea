@@ -32,9 +32,9 @@
 package org.jf.smalidea;
 
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.impl.JavaAwareProjectJdkTableImpl;
 import com.intellij.psi.PsiMethod;
 import com.intellij.psi.PsiReference;
+import com.intellij.testFramework.IdeaTestUtil;
 import com.intellij.testFramework.JavaResolveTestCase;
 import org.jf.smalidea.psi.impl.SmaliMethodReference;
 import org.junit.Assert;
@@ -138,6 +138,6 @@ public class MethodReferenceTest extends JavaResolveTestCase {
 
     @Override
     protected Sdk getTestProjectJdk() {
-        return JavaAwareProjectJdkTableImpl.getInstanceEx().getInternalJdk();
+        return IdeaTestUtil.getMockJdk21();
     }
 }

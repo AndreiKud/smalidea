@@ -31,13 +31,12 @@
 
 package org.jf.smalidea;
 
-import com.intellij.openapi.project.DumbServiceImpl;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.impl.JavaAwareProjectJdkTableImpl;
 import com.intellij.psi.JavaResolveResult;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiReference;
 import com.intellij.testFramework.DumbModeTestUtils;
+import com.intellij.testFramework.IdeaTestUtil;
 import com.intellij.testFramework.JavaResolveTestCase;
 import org.jf.smalidea.psi.impl.SmaliClass;
 import org.jf.smalidea.psi.impl.SmaliClassTypeElement;
@@ -127,6 +126,6 @@ public class ClassReferenceTest extends JavaResolveTestCase {
 
     @Override
     protected Sdk getTestProjectJdk() {
-        return JavaAwareProjectJdkTableImpl.getInstanceEx().getInternalJdk();
+        return IdeaTestUtil.getMockJdk21();
     }
 }

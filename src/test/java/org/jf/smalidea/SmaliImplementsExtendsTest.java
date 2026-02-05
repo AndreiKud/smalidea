@@ -32,14 +32,14 @@
 package org.jf.smalidea;
 
 import com.intellij.psi.PsiClass;
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import org.jf.smalidea.psi.impl.SmaliClass;
 import org.jf.smalidea.psi.impl.SmaliExtendsList;
 import org.jf.smalidea.psi.impl.SmaliFile;
 import org.jf.smalidea.psi.impl.SmaliImplementsList;
 import org.junit.Assert;
 
-public class SmaliImplementsExtendsTest extends LightCodeInsightFixtureTestCase {
+public class SmaliImplementsExtendsTest extends LightJavaCodeInsightFixtureTestCase {
     public void testNormalClass() {
         myFixture.addFileToProject("my/pkg/base.smali",
                 ".class public Lmy/pkg/base; .super Ljava/lang/Object;");

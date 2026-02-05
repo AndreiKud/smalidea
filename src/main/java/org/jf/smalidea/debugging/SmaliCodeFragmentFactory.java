@@ -31,6 +31,8 @@
 
 package org.jf.smalidea.debugging;
 
+import com.android.tools.smali.dexlib2.analysis.AnalyzedInstruction;
+import com.android.tools.smali.dexlib2.analysis.RegisterType;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.intellij.debugger.SourcePosition;
@@ -55,8 +57,6 @@ import com.sun.jdi.Location;
 import com.sun.jdi.Method;
 import com.sun.jdi.Value;
 import com.sun.jdi.VirtualMachine;
-import com.android.tools.smali.dexlib2.analysis.AnalyzedInstruction;
-import com.android.tools.smali.dexlib2.analysis.RegisterType;
 import org.jf.smalidea.SmaliFileType;
 import org.jf.smalidea.SmaliLanguage;
 import org.jf.smalidea.debugging.value.LazyValue;

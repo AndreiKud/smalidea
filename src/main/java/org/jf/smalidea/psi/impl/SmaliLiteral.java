@@ -31,10 +31,10 @@
 
 package org.jf.smalidea.psi.impl;
 
+import com.android.tools.smali.smali.LiteralTools;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiAnnotationMemberValue;
 import com.intellij.psi.tree.IElementType;
-import com.android.tools.smali.smali.LiteralTools;
 import org.jf.smalidea.SmaliTokens;
 import org.jf.smalidea.psi.SmaliCompositeElementFactory;
 import org.jf.smalidea.psi.SmaliElementTypes;

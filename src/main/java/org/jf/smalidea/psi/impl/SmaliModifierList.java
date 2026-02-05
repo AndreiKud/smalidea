@@ -31,6 +31,7 @@
 
 package org.jf.smalidea.psi.impl;
 
+import com.android.tools.smali.dexlib2.AccessFlags;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.psi.PsiElement;
@@ -44,7 +45,6 @@ import com.intellij.util.IncorrectOperationException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.android.tools.smali.dexlib2.AccessFlags;
 import org.jf.smalidea.SmaliTokens;
 import org.jf.smalidea.psi.iface.SmaliModifierListOwner;
 import org.jf.smalidea.psi.stub.SmaliModifierListStub;

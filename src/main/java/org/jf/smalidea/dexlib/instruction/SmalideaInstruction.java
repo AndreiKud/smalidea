@@ -31,9 +31,6 @@
 
 package org.jf.smalidea.dexlib.instruction;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
-import com.intellij.psi.PsiType;
 import com.android.tools.smali.dexlib2.Opcode;
 import com.android.tools.smali.dexlib2.ReferenceType;
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction;
@@ -42,6 +39,9 @@ import com.android.tools.smali.dexlib2.immutable.reference.ImmutableFieldReferen
 import com.android.tools.smali.dexlib2.immutable.reference.ImmutableMethodReference;
 import com.android.tools.smali.dexlib2.immutable.reference.ImmutableStringReference;
 import com.android.tools.smali.dexlib2.immutable.reference.ImmutableTypeReference;
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
+import com.intellij.psi.PsiType;
 import org.jf.smalidea.psi.impl.*;
 import org.jf.smalidea.util.NameUtils;
 import org.jf.smalidea.util.StringUtils;

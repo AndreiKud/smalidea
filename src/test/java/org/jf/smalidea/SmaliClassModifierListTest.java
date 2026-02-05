@@ -31,17 +31,17 @@
 
 package org.jf.smalidea;
 
+import com.android.tools.smali.dexlib2.AccessFlags;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.psi.PsiModifierListOwner;
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
-import com.android.tools.smali.dexlib2.AccessFlags;
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import org.jf.smalidea.psi.impl.SmaliAnnotation;
 import org.jf.smalidea.psi.impl.SmaliClass;
 import org.jf.smalidea.psi.impl.SmaliFile;
 import org.jf.smalidea.psi.impl.SmaliModifierList;
 import org.junit.Assert;
 
-public class SmaliClassModifierListTest extends LightCodeInsightFixtureTestCase {
+public class SmaliClassModifierListTest extends LightJavaCodeInsightFixtureTestCase {
     public void testAllClassAccessFlags() {
         SmaliFile file = (SmaliFile)myFixture.addFileToProject("my/pkg/blah.smali",
                 ".class public final interface abstract synthetic enum annotation Lmy/pkg/blah; " +

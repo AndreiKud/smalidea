@@ -31,8 +31,8 @@
 
 package org.jf.smalidea;
 
-import com.intellij.testFramework.JavaResolveTestCase;
 import com.android.tools.smali.dexlib2.Opcode;
+import com.intellij.testFramework.JavaResolveTestCase;
 import org.jf.smalidea.psi.impl.SmaliInstruction;
 import org.jf.smalidea.psi.impl.SmaliLabel;
 import org.jf.smalidea.psi.impl.SmaliLabelReference;

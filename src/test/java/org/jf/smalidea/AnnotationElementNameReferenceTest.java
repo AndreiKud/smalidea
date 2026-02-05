@@ -31,7 +31,9 @@
 
 package org.jf.smalidea;
 
-import com.intellij.psi.*;
+import com.intellij.psi.PsiAnnotationMethod;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiReference;
 import com.intellij.testFramework.JavaResolveTestCase;
 import org.junit.Assert;
 

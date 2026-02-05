@@ -31,16 +31,16 @@
 
 package org.jf.smalidea.dexlib;
 
-import com.google.common.collect.ImmutableSet;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiField;
-import com.intellij.psi.PsiModifierList;
 import com.android.tools.smali.dexlib2.AccessFlags;
 import com.android.tools.smali.dexlib2.HiddenApiRestriction;
 import com.android.tools.smali.dexlib2.base.reference.BaseFieldReference;
 import com.android.tools.smali.dexlib2.iface.Annotation;
 import com.android.tools.smali.dexlib2.iface.Field;
 import com.android.tools.smali.dexlib2.iface.value.EncodedValue;
+import com.google.common.collect.ImmutableSet;
+import com.intellij.psi.PsiClass;
+import com.intellij.psi.PsiField;
+import com.intellij.psi.PsiModifierList;
 import org.jf.smalidea.psi.impl.SmaliField;
 import org.jf.smalidea.util.NameUtils;
 

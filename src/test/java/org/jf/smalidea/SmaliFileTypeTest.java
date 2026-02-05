@@ -32,13 +32,13 @@
 package org.jf.smalidea;
 
 import com.intellij.psi.PsiFile;
-import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
+import com.intellij.testFramework.fixtures.LightJavaCodeInsightFixtureTestCase;
 import org.junit.Assert;
 
 /**
  * Tests that .smali files are properly detected
  */
-public class SmaliFileTypeTest extends LightCodeInsightFixtureTestCase {
+public class SmaliFileTypeTest extends LightJavaCodeInsightFixtureTestCase {
     public void testImportSmaliClass() {
         PsiFile file = myFixture.addFileToProject("my/pkg/blah.smali", ".class public Lmy/pkg/blah; .super Ljava/lang/Object;");
         Assert.assertEquals(SmaliFileType.INSTANCE, file.getVirtualFile().getFileType());
