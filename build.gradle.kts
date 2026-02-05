@@ -35,15 +35,15 @@ import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 plugins {
     id("java")
     id("antlr")
-    id("org.jetbrains.kotlin.jvm") version "2.2.20"
-    id("org.jetbrains.intellij.platform") version "2.10.1"
+    id("org.jetbrains.kotlin.jvm") version "2.3.10"
+    id("org.jetbrains.intellij.platform") version "2.11.0"
 }
 
 group = "org.jf"
 version = "0.08"
 
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(21)
 }
 
 repositories {
@@ -56,7 +56,7 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaCommunity("2025.2.4")
+        intellijIdea("2025.2.5")
         // androidStudio("2025.1.4.8")
         bundledPlugin("com.intellij.java")
         testFramework(TestFrameworkType.Platform)
