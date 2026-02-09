@@ -1,6 +1,16 @@
-# Fork modifications
+# Fork README
+
+### Work in progress
+* Registers in debug view
+
+### Releases
+
 * Release 0.08
    * Fix compatibility with modern IDEA's API.
+
+### Building from source
+
+Run `./gradlew buildPlugin`. The resulting ZIP file is located in `./build/distributions/` and can then be installed in the IDE via [Install Plugin from Disk](https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin_from_disk) action.
 
 # Original README
 
