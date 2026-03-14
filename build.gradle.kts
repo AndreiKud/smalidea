@@ -170,7 +170,7 @@ tasks {
     generateGrammarSource.configure {
         val tokensDir = layout.buildDirectory.dir("tokens/com/android/tools/smali/smali/")
         arguments = arguments + listOf("-lib", tokensDir.get().asFile.path)
-        outputDirectory = layout.buildDirectory.dir("generated-src/antlr/main/org/jf/smalidea/").get().asFile
+        outputDirectory = layout.buildDirectory.dir("generated-src/antlr/main/dev/resmali/").get().asFile
         dependsOn(extractTokensTask)
     }
 }

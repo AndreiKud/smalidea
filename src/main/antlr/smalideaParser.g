@@ -33,12 +33,12 @@ options {
 }
 
 @header {
-package org.jf.smalidea;
+package dev.resmali;
 
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiBuilder.Marker;
 import com.intellij.psi.tree.IElementType;
-import org.jf.smalidea.psi.SmaliElementTypes;
+import dev.resmali.psi.SmaliElementTypes;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
