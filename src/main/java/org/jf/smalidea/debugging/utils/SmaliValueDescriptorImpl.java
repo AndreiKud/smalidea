@@ -1,5 +1,4 @@
 /*
- * Copyright 2016, Google Inc.
  * Copyright 2026, Andrei Kudryavtsev (andreikudrya1995@gmail.com).
  * All rights reserved.
  *
@@ -30,47 +29,51 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.jf.smalidea.debugging.value;
+package org.jf.smalidea.debugging.utils;
 
+import com.intellij.debugger.DebuggerContext;
+import com.intellij.debugger.JavaDebuggerBundle;
+import com.intellij.debugger.engine.evaluation.EvaluateException;
+import com.intellij.debugger.engine.evaluation.EvaluationContextImpl;
+import com.intellij.debugger.impl.PositionUtil;
+import com.intellij.debugger.ui.impl.watch.ValueDescriptorImpl;
 import com.intellij.openapi.project.Project;
-import com.sun.jdi.ArrayReference;
-import com.sun.jdi.ClassNotLoadedException;
-import com.sun.jdi.InvalidTypeException;
+import com.intellij.psi.JavaPsiFacade;
+import com.intellij.psi.PsiElementFactory;
+import com.intellij.psi.PsiExpression;
+import com.intellij.util.IncorrectOperationException;
+import com.sun.jdi.ObjectReference;
+import com.sun.jdi.Type;
 import com.sun.jdi.Value;
-import org.jf.smalidea.psi.impl.SmaliMethod;
 
-import java.util.List;
+public class SmaliValueDescriptorImpl extends ValueDescriptorImpl {
+    private final String name;
+    private final ObjectReference objRef;
 
-public class LazyArrayReference extends LazyObjectReference<ArrayReference> implements ArrayReference {
-    public LazyArrayReference(SmaliMethod method, Project project, int registerNumber, String registerName, String type) {
-        super(method, project, registerNumber, registerName, type);
+    public SmaliValueDescriptorImpl(Project project, String name, ObjectReference objRef) {
+        super(project, objRef);
+        this.name = name;
+        this.objRef = objRef;
     }
 
-    public Value getValue(int index) {
-        return getValue().getValue(index);
+    @Override public Value calcValue(EvaluationContextImpl ctx) {
+        return objRef;
     }
 
-    public List<Value> getValues() {
-        return getValue().getValues();
+    @Override public String calcValueName() {
+        return name;
     }
 
-    public List<Value> getValues(int index, int length) {
-        return getValue().getValues(index, length);
+    @Override public PsiExpression getDescriptorEvaluation(DebuggerContext context) throws EvaluateException {
+        PsiElementFactory elementFactory = JavaPsiFacade.getElementFactory(myProject);
+        try {
+            return elementFactory.createExpressionFromText(getName(), PositionUtil.getContextElement(context));
+        } catch (IncorrectOperationException e) {
+            throw new EvaluateException(JavaDebuggerBundle.message("error.invalid.local.variable.name", getName()), e);
+        }
     }
 
-    public int length() {
-        return getValue().length();
-    }
-
-    public void setValue(int index, Value value) throws InvalidTypeException, ClassNotLoadedException {
-        getValue().setValue(index, value);
-    }
-
-    public void setValues(int index, List<? extends Value> values, int srcIndex, int length) throws InvalidTypeException, ClassNotLoadedException {
-        getValue().setValues(index, values, srcIndex, length);
-    }
-
-    public void setValues(List<? extends Value> values) throws InvalidTypeException, ClassNotLoadedException {
-        getValue().setValues(values);
+    @Override public Type getType() {
+        return objRef.type();
     }
 }

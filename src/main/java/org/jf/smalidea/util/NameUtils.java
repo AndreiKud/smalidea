@@ -1,5 +1,6 @@
 /*
  * Copyright 2014, Google Inc.
+ * Copyright 2026, Andrei Kudryavtsev (andreikudrya1995@gmail.com).
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -79,6 +80,9 @@ public class NameUtils {
         PsiClass parent = psiClass.getContainingClass();
         if (parent != null) {
             int offset = qualifiedName.lastIndexOf('.');
+            if (offset == -1) {
+                return javaToSmaliType(qualifiedName);
+            }
             String parentName = qualifiedName.substring(0, offset);
             assert parentName.equals(parent.getQualifiedName());
             String className = qualifiedName.substring(offset+1, qualifiedName.length());

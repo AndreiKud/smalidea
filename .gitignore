@@ -1,6 +1,7 @@
 build
 test-config
 test-system
+/.run/
 
 # Ignore Gradle project-specific cache directory
 .gradle
@@ -9,3 +10,6 @@ test-system
 .intellijPlatform
 
 local.properties
+
+.DS_Store
+/tmp/

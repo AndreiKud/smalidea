@@ -1,5 +1,6 @@
 /*
  * Copyright 2014, Google Inc.
+ * Copyright 2026, Andrei Kudryavtsev (andreikudrya1995@gmail.com).
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,12 +32,7 @@
 
 package org.jf.smalidea;
 
-import com.intellij.openapi.module.Module;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.roots.ContentEntry;
-import com.intellij.openapi.roots.LanguageLevelModuleExtension;
-import com.intellij.openapi.roots.ModifiableRootModel;
-import com.intellij.pom.java.LanguageLevel;
 import com.intellij.psi.JavaPsiFacade;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiClassType;
@@ -158,10 +154,6 @@ public class SmaliClassTest extends LightJavaCodeInsightFixtureTestCase {
         return new DefaultLightProjectDescriptor() {
             public Sdk getSdk() {
                 return IdeaTestUtil.getMockJdk21();
-            }
-
-            public void configureModule(Module module, ModifiableRootModel model, ContentEntry contentEntry) {
-                model.getModuleExtension(LanguageLevelModuleExtension.class).setLanguageLevel(LanguageLevel.JDK_1_6);
             }
         };
     }

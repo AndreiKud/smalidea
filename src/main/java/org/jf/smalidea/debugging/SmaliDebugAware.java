@@ -1,5 +1,4 @@
 /*
- * Copyright 2016, Google Inc.
  * Copyright 2026, Andrei Kudryavtsev (andreikudrya1995@gmail.com).
  * All rights reserved.
  *
@@ -30,18 +29,16 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.jf.smalidea.debugging.value;
+package org.jf.smalidea.debugging;
 
-import com.intellij.openapi.project.Project;
-import com.sun.jdi.ShortValue;
-import org.jf.smalidea.psi.impl.SmaliMethod;
+import com.intellij.debugger.engine.JavaDebugAware;
+import com.intellij.psi.PsiFile;
+import org.jetbrains.annotations.NotNull;
+import org.jf.smalidea.SmaliLanguage;
 
-public class LazyShortValue extends LazyComparablePrimitiveValue<ShortValue> implements ShortValue {
-    public LazyShortValue(SmaliMethod method, Project project, int registerNumber, String registerName, String type) {
-        super(method, project, registerNumber, registerName, type);
-    }
-
-    @Override public short value() {
-        return getValue().value();
+public class SmaliDebugAware extends JavaDebugAware {
+    @Override
+    public boolean isBreakpointAware(@NotNull PsiFile psiFile) {
+        return psiFile.getLanguage() == SmaliLanguage.INSTANCE;
     }
 }
