@@ -122,6 +122,24 @@ fun JavaExec.setupIdeExec() {
 }
 
 tasks {
+    patchPluginXml {
+        pluginId = "dev.resmali"
+        pluginName = "ReSmali"
+        pluginVersion = "0.09"
+        pluginDescription = """
+          ReSmali is a fork of the original <a href="https://github.com/JesusFreke/smalidea">smalidea</a> plugin by Ben Gruver (JesusFreke).<br>
+          A smali language plugin for IDEA that supports syntax highlighting, debugging, navigation, etc.
+        """.trimIndent()
+
+        changeNotes = null
+
+        vendorName = "Andrei Kudryavtsev"
+        vendorEmail = "andreikudrya1995@gmail.com"
+        vendorUrl = "https://github.com/AndreiKud"
+
+        sinceBuild = "251.23774.435"
+    }
+
     runIde {
         setupIdeExec()
     }

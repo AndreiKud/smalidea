@@ -31,19 +31,6 @@
   -->
 
 <idea-plugin require-restart="false">
-    <id>dev.resmali</id>
-    <name>ReSmali</name>
-    <version>0.09</version>
-    <vendor email="andreikudrya1995@gmail.com" url="https://github.com/AndreiKud">Andrei Kudryavtsev</vendor>
-    <idea-version since-build="251.23774.435"/>
-
-    <description><![CDATA[
-      ReSmali is a fork of the original <a href="https://github.com/JesusFreke/smalidea">smalidea</a> plugin by Jesus Freke.
-      A smali language plugin for IDEA that supports syntax highlighting, debugging, navigation, etc.
-    ]]></description>
-
-    <change-notes><![CDATA[]]>
-    </change-notes>
 
     <extensions defaultExtensionNs="com.intellij">
         <fileType name="ReSmali" implementationClass="dev.resmali.SmaliFileType"
