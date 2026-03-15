@@ -92,6 +92,7 @@ repositories {
 dependencies {
     intellijPlatform {
         intellijIdea("2025.2.5")
+        // androidStudio("2025.2.3.9")
         bundledPlugin("com.intellij.java")
         testFramework(TestFrameworkType.Platform)
         testFramework(TestFrameworkType.Plugin.Java)
