@@ -30,20 +30,20 @@
   ~ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   -->
 
-<idea-plugin version="2">
-    <id>org.jf.smalidea</id>
-    <name>Smalidea</name>
+<idea-plugin require-restart="false">
+    <id>dev.resmali</id>
+    <name>ReSmali</name>
     <version>0.08</version>
-    <vendor email="jesusfreke@jesusfreke.com" url="http://smali.org">JesusFreke</vendor>
+    <vendor email="andreikudrya1995@gmail.com" url="https://github.com/AndreiKud">Andrei Kudryavtsev</vendor>
+    <idea-version since-build="251.23774.435"/>
 
     <description><![CDATA[
+      ReSmali is a fork of the original <a href="https://github.com/JesusFreke/smalidea">smalidea</a> plugin by Jesus Freke.
       A smali language plugin for IDEA that supports syntax highlighting, debugging, navigation, etc.
     ]]></description>
 
     <change-notes><![CDATA[]]>
     </change-notes>
-
-    <idea-version since-build="191.4212.41"/>
 
     <extensions defaultExtensionNs="com.intellij">
         <fileType name="ReSmali" implementationClass="dev.resmali.SmaliFileType"
@@ -72,26 +72,16 @@
         <usageTargetProvider implementation="dev.resmali.findUsages.SmaliUsageTargetProvider"/>
         <usageTypeProvider implementation="dev.resmali.findUsages.SmaliUsageTypeProvider"/>
         <todoIndexer filetype="ReSmali" implementationClass="dev.resmali.highlighter.SmaliTodoIndexer"/>
-        <findUsagesHandlerFactory implementation="dev.resmali.findUsages.SmaliFindUsagesHandlerFactory" />
+        <findUsagesHandlerFactory implementation="dev.resmali.findUsages.SmaliFindUsagesHandlerFactory"/>
 
         <!-- The "Smali" (with a capital S) language is the one registered by Android Studio's smali plugin.
              This substitutor ensures that "ReSmali" language is used instead of AS's "Smali" language. -->
         <lang.substitutor language="Smali" implementationClass="dev.resmali.SmaliSubstitutor"/>
     </extensions>
 
-    <application-components>
-    </application-components>
-
-    <project-components>
-    </project-components>
-
-    <actions>
-    </actions>
-
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
     <depends>com.intellij.modules.java</depends>
     <depends>com.intellij.modules.xdebugger</depends>
-
 
 </idea-plugin>
