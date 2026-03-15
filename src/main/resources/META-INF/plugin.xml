@@ -46,14 +46,14 @@
     <idea-version since-build="191.4212.41"/>
 
     <extensions defaultExtensionNs="com.intellij">
-        <fileType name="smali" implementationClass="dev.resmali.SmaliFileType"
-                  fieldName="INSTANCE" language="smali" extensions="smali"/>
-        <syntaxHighlighter key="smali" factoryClass="dev.resmali.highlighter.SmaliHighlighterFactory"/>
-        <lang.syntaxHighlighterFactory language="smali"
+        <fileType name="ReSmali" implementationClass="dev.resmali.SmaliFileType"
+                  fieldName="INSTANCE" language="ReSmali" extensions="smali"/>
+        <syntaxHighlighter key="ReSmali" factoryClass="dev.resmali.highlighter.SmaliHighlighterFactory"/>
+        <lang.syntaxHighlighterFactory language="ReSmali"
                                        implementationClass="dev.resmali.highlighter.SmaliHighlighterFactory"/>
         <colorSettingsPage implementation="dev.resmali.SmaliColorsPage"/>
-        <lang.parserDefinition language="smali" implementationClass="dev.resmali.SmaliParserDefinition"/>
-        <lang.ast.factory language="smali" implementationClass="dev.resmali.SmaliASTFactory"/>
+        <lang.parserDefinition language="ReSmali" implementationClass="dev.resmali.SmaliParserDefinition"/>
+        <lang.ast.factory language="ReSmali" implementationClass="dev.resmali.SmaliASTFactory"/>
         <java.elementFinder implementation="dev.resmali.psi.index.SmaliClassFinder"/>
         <stubIndex implementation="dev.resmali.psi.index.SmaliClassNameIndex"/>
 
@@ -64,19 +64,18 @@
         <debugger.extraDebugNodesProvider implementation="dev.resmali.debugging.SmaliExtraDebugNodesProvider"/>
 
         <stubElementTypeHolder class="dev.resmali.psi.SmaliElementTypes"/>
-        <lang.findUsagesProvider language="smali"
+        <lang.findUsagesProvider language="ReSmali"
                                  implementationClass="dev.resmali.findUsages.SmaliFindUsagesProvider"/>
         <referencesSearch implementation="dev.resmali.findUsages.SmaliClassReferenceSearcher"/>
-        <lang.psiStructureViewFactory language="smali"
+        <lang.psiStructureViewFactory language="ReSmali"
                                       implementationClass="dev.resmali.structureView.SmaliStructureViewBuilderFactory"/>
         <usageTargetProvider implementation="dev.resmali.findUsages.SmaliUsageTargetProvider"/>
         <usageTypeProvider implementation="dev.resmali.findUsages.SmaliUsageTypeProvider"/>
-        <todoIndexer filetype="smali" implementationClass="dev.resmali.highlighter.SmaliTodoIndexer"/>
+        <todoIndexer filetype="ReSmali" implementationClass="dev.resmali.highlighter.SmaliTodoIndexer"/>
         <findUsagesHandlerFactory implementation="dev.resmali.findUsages.SmaliFindUsagesHandlerFactory" />
 
         <!-- The "Smali" (with a capital S) language is the one registered by Android Studio's smali plugin.
-             This substitutor ensures that smalidea's "smali" (lowercase s) language is used instead of AS's "Smali"
-             language. -->
+             This substitutor ensures that "ReSmali" language is used instead of AS's "Smali" language. -->
         <lang.substitutor language="Smali" implementationClass="dev.resmali.SmaliSubstitutor"/>
     </extensions>
 
