@@ -1,108 +1,91 @@
-# Fork README
+# ReSmali
 
-### Work in progress
-* Registers in debug view
+ReSmali is a fork of the original [smalidea](https://github.com/JesusFreke/smalidea) plugin by Ben Gruver (JesusFreke).
+Renamed to comply with
+JetBrains' [plugin name policy](https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html?_cl=MTsxOzE7V3RwUWFGU1hRcUpnUFRmaHMwQ1hITnpiVTlwZ25RRnpzY1Z2V3A3RTZ6OE5BVW1ISTZ2eFZ3bzQxZEY5OXY1STs%3D#plugin-name).
 
-### Releases
+> [!WARNING]  
+> Plugin is still in the development stage and bugs are expected. Please report any issues. Thank you.
 
-* Release 0.08
-   * Fix compatibility with modern IDEA's API.
+![debugging screenshot](docs/images/main.png)
 
-### Building from source
+# Features
 
-Run `./gradlew buildPlugin`. The resulting ZIP file is located in `./build/distributions/` and can then be installed in the IDE via [Install Plugin from Disk](https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin_from_disk) action.
+* Syntax highlighting
+* Basic refactoring (renaming)
+* Navigation, search (go to definition, find usages)
+* Structure view
+* Debugging
+    * Registers listing
+    * Instruction-level single stepping
+    * Examining objects' internal state
+    * Conditional breakpoints
+    * Altering register value at runtime
+    * Walking stack frames
+    * Evaluate expressions/watches using registers
 
-# Original README
+# Building from Source
 
-smalidea is a smali language plugin for [IntelliJ IDEA](https://www.jetbrains.com/idea/)/[Android Studio](http://developer.android.com/sdk/index.html)
+Run `./gradlew buildPlugin`.
 
-### [DOWNLOAD](https://bitbucket.org/JesusFreke/smalidea/downloads) ###
+The resulting ZIP file is located in `./build/distributions/` and can then be installed in
+the IDE
+via [Install Plugin from Disk](https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin_from_disk)
+action.
 
-It is currently very experimental, and you will likely run into issues.
+# How to Use
 
-[![](https://raw.githubusercontent.com/wiki/JesusFreke/smali/smalidea.png)](https://raw.githubusercontent.com/wiki/JesusFreke/smali/smalidea.png)
+There are other smali plugins out there. You may see a pop-up about conflicting file extensions if you are:
 
-## News
-* 2021-03-02 - v0.06 is out. This brings smalidea back up to snuff with regards to modern versions of IDEA/Android Studio
-  * This force updates the smali file type to be associated with this plugin instead of the built-in smali plugin in Android Studio
-  * This adds support for the new synaxes (hidden api restrictions, spaces in identifiers, etc.)
-  * This [fixes a problem](https://github.com/JesusFreke/smalidea/pull/10) with how registers were mapped on art while debugging (thanks @bet4it)
-  * [Structure view](https://github.com/JesusFreke/smalidea/pull/14) for smali files (thanks @Donlon)
+- using Android
+  Studio ([plugin](https://cs.android.com/android-studio/platform/tools/adt/idea/+/mirror-goog-studio-main:smali/;drc=340fbf48f2e4e69dcea79c3a853e1dc2d801f5cd)
+  is bundled);
+- using IntelliJ IDEA and have [Smali Viewer](https://plugins.jetbrains.com/plugin/22067-smali-viewer) installed;
 
+It happens because we are all trying to assign .smali files to plugin-specific file types. Select ReSmali here.
+<details>
+    <summary>Conflicting extensions</summary>
+    <img src="./docs/images/conflicting_extensions.png" alt="">
+</details>
 
-* 2020-02-23 - smalidea has been migrated to a separate repository. This new repository is a filtered copy
-of the original smali repository in order to maintain the git history. However, any versions prior to this migration
-are not expected to actually build. If you need to build an old version for some reason, you should check out and
-build from the smali repository.
-* 2016-02-27 - v0.03 is out. This is mostly a stability/bug fix release, with no significant new functionality.
+The following steps assume that you have already made your app's process debuggable
+(patched manifest / hooked process start / etc.) and
+launched it.
 
-## Features
-### Current Features
-* Syntax Highlighting/Syntax Errors
-* Bytecode level debugging
-  * Breakpoints
-  * Instruction level single stepping
-  * Adding watches for arbitrary (non-named) registers
-  * Full java-style expression support in locals window, etc. while debugging
-* Go to Definition
-* Find Usages
-* Renaming
-* Referencing smali classes from java code (except it can't actually be compiled, yet)
-* Issue reporting - easily create a new github issue from the error dialog
-  * [![](https://raw.githubusercontent.com/wiki/JesusFreke/smali/error.png)](https://raw.githubusercontent.com/wiki/JesusFreke/smali/error.png)
+## Android Studio
 
-### Possible Future Features
-* Auto-complete (instruction names, class/method/field references, etc.)
-* Compile support for smali-only projects
-* Robust error detection (e.g. full bytecode verification)
-* Smoother project import process
-  * Automatic detection of source directory
-  * Choosing sdk
-* Wizard for importing an apk as a new project
-* "Smali Class" entry in "New..." context menu
-* Show all registers with a value in "locals" pane
-* Ability to set the value of a register in "watch" pane
+1. Either import an APK using [Profile or debug APK](https://developer.android.com/studio/debug/apk-debugger.html) or
+   "File" → "Open" a disassembled APK ([apktool](https://apktool.org/) /
+   using [baksmali](https://github.com/baksmali/smali) directly / etc.)
+2. "Run" → "Attach Debugger to Android Process".
+3. Select your process.
+4. _Optionally_. Set up project's SDK if you want to evaluate expressions using classes from JDK or Android Framework or
+   navigate to them. "File" → "Project Structure":
+    <details>
+        <summary>Android SDK</summary>
+        <img src="./docs/images/set_project_android_sdk.png" alt="first option to set project android sdk">
+    </details>
+5. The application should pause when the breakpoint is hit.
 
-### "Stretch" Features
-* Compile support for mixed smali+java projects
-* "Introduce new register" intention
-* Import (and deodex) device framework as new module (or new sdk??)
-* Expose register type analysis data
-  * Show the expected type of a register at any point
-  * Find locations where the register's value could have been set
+## IntelliJ IDEA
 
-## Installation
-1. Download the latest smalidea zip file from the [Bitbucket download page](https://bitbucket.org/JesusFreke/smalidea/downloads)
-2. In IDEA/AS, go to Settings->Plugins and click the "Install plugin from disk" button, selecting the downloaded smalidea zip file
-3. Click "Apply" and restart IDEA/AS
-4. ???
-5. Profit!
-
-## Debugging an application
-
-Note: Single-instruction stepping is only supported in IDEA 14.1 and greater, and any future version of Android Studio based on IDEA 14.1 or greater. In earlier versions, attempting to single step will step to the next .line directive, instead of stepping to the next instruction.
-
-1. Manually disassemble an application using baksmali into a "src" subdirectory of a new project directory, e.g. `baksmali d myapp.apk -o ~/projects/myapp/src`
-2. In IDEA, import a new project, and select the project directory. e.g. `~/projects/myapp`
-3. Use the "Create project from existing sources" option when importing the project
-4. Once the project has been created, right click on the src directory and select "Mark Directory As->Sources Root"
-5. Open the project settings and select/create an appropriate JDK
-6. Install/start the application on the device
-7. Run `adb shell ps | grep <package-name>` and take note of the pid of the application process
-8. run `adb forward tcp:8700 jdwp:<pid>`
-9. In IDEA, Create a new "Remote" debug configuration (Run->Edit Configurations), and change the debug port to 8700
-10. Run->Debug
-11. The application should pause if/when the breakpoint is hit, at which point you can single step, add watches, etc.
-
-or do the following in recent Android Studio 3.2:
-
-1. Manually disassemble an application using baksmali into a "src" subdirectory of a new project directory, e.g. `baksmali d myapp.apk -o ~/projects/myapp/src`
-2. In Android Studio, close your current project and select "Open an existing Android Studio project".
-3. Once the project has been created, right click on the src directory and select "Mark Directory As->Sources Root"
-4. Make sure your app has `android:debuggable="true"` in Android Manifest. Turn on "USB debugging" and use "Select debug app" to select your app in "Developer options" on Android device
-5. Install/start the application on the device
-6. Run `adb shell ps | grep <package-name>` and take note of the pid of the application process
-7. run `adb forward tcp:8700 jdwp:<pid>`
-8. In Android Studio, Create a new "Remote" debug configuration (Run->Edit Configurations), and change the debug port to 8700
-9. In Android Studio, select Run -> Debug
-10. The application should pause if/when the breakpoint is hit, at which point you can single step, add watches, etc.
+1. "File" → "Open" a disassembled APK ([apktool](https://apktool.org/) /
+   using [baksmali](https://github.com/baksmali/smali) directly / etc.)
+2. Setup ADB forwarding:
+    1. Get process ID via `adb shell pidof <package>` or `adb shell ps | grep <package>`
+    2. Run `adb forward tcp:8704 jdwp:<pid>` (port can be arbitrary).
+3. In IDE "Run" → "Edit Configurations..." → "Add" → "Remote JVM Debug" with port from previous step.
+4. Run debug configuration.
+5. _Optionally_. If you want to evaluate expressions using classes from JDK or Android Framework (which includes JDK) or
+   navigate to them, you have to set project's SDK. "File" → "Project Structure":
+    <details>
+        <summary>JDK</summary>
+        <img src="./docs/images/set_project_jdk.png" alt="first option to set project android sdk">
+    </details>
+    <details>
+        <summary>Android SDK</summary>
+        Sources are added via plus button under library name.
+        <br>
+        <img src="./docs/images/set_project_android_sdk_alt.png" alt="second option to set project android sdk">
+    </details>
+6. The application should pause when the breakpoint is hit.

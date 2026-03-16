@@ -101,7 +101,7 @@ tasks {
                 <li>Highlighting</li>
                 <li>Debugging (registers listing, examining objects state, conditional breakpoints, setting values at runtime, etc.)</li>
                 <li>Basic refactoring</li>
-                <li>Navigation, search</li>
+                <li>Navigation, search, structure view</li>
             </ul>
             ReSmali is a fork of the original <a href="https://github.com/JesusFreke/smalidea">smalidea</a> plugin by Ben Gruver (JesusFreke).
         """.trimIndent()
