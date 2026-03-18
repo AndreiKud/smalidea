@@ -310,6 +310,7 @@ public class NameUtils {
                 return;
             case 'D':
                 dest.append("double");
+                return;
             case 'L':
                 for (int i=1; i<smaliType.length()-1; i++) {
                     char c = smaliType.charAt(i);

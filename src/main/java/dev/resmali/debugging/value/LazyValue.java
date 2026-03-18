@@ -40,7 +40,6 @@ import com.intellij.debugger.engine.jdi.StackFrameProxy;
 import com.intellij.debugger.impl.DebuggerContextImpl;
 import com.intellij.debugger.jdi.VirtualMachineProxyImpl;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.ThrowableComputable;
 import com.jetbrains.jdi.LocalVariableImpl;
@@ -50,6 +49,7 @@ import com.sun.jdi.*;
 import dev.resmali.debugging.utils.RegisterSlotUtils;
 import dev.resmali.psi.impl.SmaliInstruction;
 import dev.resmali.psi.impl.SmaliMethod;
+import dev.resmali.util.SmaliLogger;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -66,7 +66,6 @@ public class LazyValue<T extends Value> implements Value {
     private EvaluationContext evaluationContext;
     private Value value;
     private static volatile java.lang.reflect.Field slotField = null;
-    private static final Logger LOG = Logger.getInstance(LazyValue.class);
 
     private static final Value EMPTY_SENTINEL = new Value() {
         @Override
@@ -132,7 +131,7 @@ public class LazyValue<T extends Value> implements Value {
     }
 
     @Nullable
-    public T getNullableValue(boolean allowNull) {
+    public synchronized T getNullableValue(boolean allowNull) {
         if (value == null) {
             try {
                 if (evaluationContext == null) {
@@ -146,9 +145,10 @@ public class LazyValue<T extends Value> implements Value {
                     }
                 }
                 value = evaluateRegister(evaluationContext, method, registerNumber);
-                evaluationContext = null;
             } catch (EvaluateException ex) {
-                LOG.debug("Failed to evaluate register " + registerName, ex);
+                SmaliLogger.INSTANCE.debug("Failed to evaluate register " + registerName, ex);
+            } finally {
+                evaluationContext = null;
             }
         }
         if (value == null && !allowNull) {
@@ -248,14 +248,15 @@ public class LazyValue<T extends Value> implements Value {
         for (SmaliInstruction instruction : smaliMethod.getInstructions()) {
             methodSize += instruction.getInstructionSize();
         }
-        Location endLocation = null;
+        Location location = null;
         for (int endCodeIndex = (methodSize / 2) - 1; endCodeIndex >= 0; endCodeIndex--) {
-            endLocation = method.locationOfCodeIndex(endCodeIndex);
-            if (endLocation != null) {
+            location = method.locationOfCodeIndex(endCodeIndex);
+            if (location != null) {
                 break;
             }
         }
-        if (endLocation == null) {
+        if (location == null) {
+            SmaliLogger.INSTANCE.debug("Null location for register " + registerName + " in method " + method.name());
             return null;
         }
 
@@ -275,7 +276,7 @@ public class LazyValue<T extends Value> implements Value {
                 return strategy.call();
             } catch (Exception e) {
                 if (!(e instanceof ValueNotFoundException)) {
-                    LOG.debug(e);
+                    SmaliLogger.INSTANCE.debug(e);
                 }
                 return EMPTY_SENTINEL;
             }
@@ -317,7 +318,7 @@ public class LazyValue<T extends Value> implements Value {
             }
             throw new ValueNotFoundException();
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            LOG.error(e);
+            SmaliLogger.INSTANCE.error(e);
             throw e;
         }
     }

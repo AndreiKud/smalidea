@@ -187,7 +187,7 @@ public class SmaliLexerTest extends LexerTestCase {
             } else if (type == 8) {
                 char randomChar;
                 do {
-                    randomChar = (char)random.nextInt(2^16);
+                    randomChar = (char)random.nextInt(1 << 16);
                 } while(!Character.isValidCodePoint(randomChar));
                 sb.append(randomChar);
             } else if (type > 4) {

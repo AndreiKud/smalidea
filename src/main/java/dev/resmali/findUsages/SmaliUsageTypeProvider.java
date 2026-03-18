@@ -176,7 +176,7 @@ public class SmaliUsageTypeProvider implements UsageTypeProvider {
                 } else if (opcode == Opcode.THROW_VERIFICATION_ERROR) {
                     return VERIFICATION_ERROR;
                 }
-            } if (element instanceof SmaliLiteral) {
+            } else if (element instanceof SmaliLiteral) {
                 return LITERAL;
             }
         }
@@ -195,7 +195,7 @@ public class SmaliUsageTypeProvider implements UsageTypeProvider {
                 if (opcode == Opcode.THROW_VERIFICATION_ERROR) {
                     return VERIFICATION_ERROR;
                 }
-            } if (element instanceof SmaliLiteral) {
+            } else if (element instanceof SmaliLiteral) {
                 return LITERAL;
             }
         }

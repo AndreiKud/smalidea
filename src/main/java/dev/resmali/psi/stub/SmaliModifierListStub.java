@@ -33,10 +33,10 @@ package dev.resmali.psi.stub;
 
 import com.intellij.psi.stubs.StubBase;
 import com.intellij.psi.stubs.StubElement;
-import dev.resmali.psi.impl.SmaliMethod;
+import dev.resmali.psi.impl.SmaliModifierList;
 import dev.resmali.psi.stub.element.SmaliModifierListElementType;
 
-public class SmaliModifierListStub extends StubBase<SmaliMethod> {
+public class SmaliModifierListStub extends StubBase<SmaliModifierList> {
     private final int accessFlags;
 
     public SmaliModifierListStub(StubElement parent, int accessFlags) {

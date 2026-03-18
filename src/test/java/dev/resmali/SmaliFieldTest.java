@@ -210,6 +210,7 @@ public class SmaliFieldTest extends LightJavaCodeInsightFixtureTestCase {
         Assert.assertNull(field);
     }
 
+    // TODO: identical to testBasicField (testFieldAnnotation as an example)
     public void testFieldAnnotations() {
         SmaliFile file = (SmaliFile)myFixture.addFileToProject("my/pkg/blah.smali",
                 ".class public Lmy/pkg/blah; .super Ljava/lang/Object;\n" +

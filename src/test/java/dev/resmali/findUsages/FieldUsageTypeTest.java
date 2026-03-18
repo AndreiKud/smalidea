@@ -90,7 +90,7 @@ public class FieldUsageTypeTest extends UsageTypeTest {
                         "    sput-char v0, Lblah;->bl<ref:36>ah:Lblah;\n" +
                         "    sput-object v0, Lblah;->bl<ref:37>ah:Lblah;\n" +
                         // TODO: sput object volatile is no longer supported at default api level,
-                        // thus disable his usage until Smalidea supports to define an api level
+                        //  thus disable his usage until Smalidea supports to define an api level
                         // "    sput-object-volatile v0, Lblah;->bl<ref:38>ah:Lblah;\n" +
                         "    sput-short v0, Lblah;->bl<ref:39>ah:Lblah;\n" +
                         "    sput-volatile v0, Lblah;->bl<ref:40>ah:Lblah;\n" +

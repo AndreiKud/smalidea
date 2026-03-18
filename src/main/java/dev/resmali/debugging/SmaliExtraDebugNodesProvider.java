@@ -8,6 +8,7 @@ import com.intellij.debugger.ui.tree.ExtraDebugNodesProvider;
 import com.intellij.xdebugger.frame.XCompositeNode;
 import com.intellij.xdebugger.frame.XValueChildrenList;
 import com.intellij.xdebugger.frame.XValueGroup;
+import dev.resmali.util.SmaliLogger;
 import org.jetbrains.annotations.NotNull;
 import dev.resmali.debugging.utils.RegistersContext;
 import dev.resmali.debugging.utils.SmaliRegisterValue;
@@ -79,12 +80,17 @@ public class SmaliExtraDebugNodesProvider implements ExtraDebugNodesProvider {
                 node.addChildren(XValueChildrenList.EMPTY, false);
                 managerThread.schedule(new DebuggerCommandImpl() {
                     @Override protected void action() throws Exception {
+                        if (node.isObsolete()) {
+                            return;
+                        }
                         XValueChildrenList paramRegisters = collectRegisters(
                                 allLazyRegisters,
                                 evaluationContext,
                                 calcName
                         );
-                        node.addChildren(paramRegisters, true);
+                        if (paramRegisters != null) {
+                            node.addChildren(paramRegisters, true);
+                        }
                     }
                 });
             }
@@ -113,7 +119,8 @@ public class SmaliExtraDebugNodesProvider implements ExtraDebugNodesProvider {
                 result.add(registerValue);
             }
         } catch (Exception ex) {
-            throw new RuntimeException(ex);
+            SmaliLogger.INSTANCE.error(ex);
+            return null;
         }
         return result;
     }

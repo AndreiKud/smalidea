@@ -42,10 +42,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiField;
-import com.intellij.psi.PsiMethod;
-import com.intellij.psi.PsiModifierList;
+import com.intellij.psi.*;
 import dev.resmali.util.NameUtils;
 
 import javax.annotation.Nonnull;
@@ -69,16 +66,24 @@ public class SmalideaClassDef extends BaseTypeReference implements ClassDef {
             return flags;
         }
 
-        if (modifierList.hasModifierProperty("public")) {
+        if (modifierList.hasModifierProperty(PsiModifier.PUBLIC)) {
             flags |= AccessFlags.PUBLIC.getValue();
         }
 
-        if (modifierList.hasModifierProperty("final")) {
+        if (modifierList.hasModifierProperty(PsiModifier.FINAL)) {
             flags |= AccessFlags.FINAL.getValue();
         }
 
-        if (modifierList.hasModifierProperty("abstract")) {
+        if (modifierList.hasModifierProperty(PsiModifier.ABSTRACT)) {
             flags |= AccessFlags.ABSTRACT.getValue();
+        }
+
+        if (modifierList.hasModifierProperty(PsiModifier.PROTECTED)) {
+            flags |= AccessFlags.PROTECTED.getValue();
+        }
+
+        if (modifierList.hasModifierProperty(PsiModifier.PRIVATE)) {
+            flags |= AccessFlags.PRIVATE.getValue();
         }
 
         if (psiClass.isInterface()) {
@@ -138,7 +143,7 @@ public class SmalideaClassDef extends BaseTypeReference implements ClassDef {
                         if (modifierList == null) {
                             return false;
                         }
-                        return modifierList.hasModifierProperty("static");
+                        return modifierList.hasModifierProperty(PsiModifier.STATIC);
                     }
                 }),
                 new Function<PsiField, Field>() {
@@ -156,7 +161,7 @@ public class SmalideaClassDef extends BaseTypeReference implements ClassDef {
                         if (modifierList == null) {
                             return true;
                         }
-                        return !modifierList.hasModifierProperty("static");
+                        return !modifierList.hasModifierProperty(PsiModifier.STATIC);
                     }
                 }),
                 new Function<PsiField, Field>() {
@@ -179,9 +184,9 @@ public class SmalideaClassDef extends BaseTypeReference implements ClassDef {
                         new Predicate<PsiMethod>() {
                     @Override public boolean apply(PsiMethod psiMethod) {
                         PsiModifierList modifierList = psiMethod.getModifierList();
-                        return modifierList.hasModifierProperty("static") ||
-                                modifierList.hasModifierProperty("private") ||
-                                modifierList.hasModifierProperty("constructor");
+                        return modifierList.hasModifierProperty(PsiModifier.STATIC) ||
+                               modifierList.hasModifierProperty(PsiModifier.PRIVATE) ||
+                               modifierList.hasModifierProperty("constructor");
                     }
                 }),
                 new Function<PsiMethod, Method>() {
@@ -196,9 +201,9 @@ public class SmalideaClassDef extends BaseTypeReference implements ClassDef {
                 Iterables.filter(Arrays.asList(psiClass.getMethods()), new Predicate<PsiMethod>() {
                     @Override public boolean apply(PsiMethod psiMethod) {
                         PsiModifierList modifierList = psiMethod.getModifierList();
-                        return !modifierList.hasModifierProperty("static") &&
-                                !modifierList.hasModifierProperty("private") &&
-                                !modifierList.hasModifierProperty("constructor");
+                        return !modifierList.hasModifierProperty(PsiModifier.STATIC) &&
+                               !modifierList.hasModifierProperty(PsiModifier.PRIVATE) &&
+                               !modifierList.hasModifierProperty("constructor");
                     }
                 }),
                 new Function<PsiMethod, Method>() {

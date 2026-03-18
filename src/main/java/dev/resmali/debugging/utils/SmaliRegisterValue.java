@@ -37,6 +37,9 @@ public class SmaliRegisterValue extends XNamedValue {
         var managerThread = ((DebugProcessImpl) evaluationContext.getDebugProcess()).getManagerThread();
         managerThread.schedule(new DebuggerCommandImpl() {
             @Override protected void action() throws Exception {
+                if (node.isObsolete()) {
+                    return;
+                }
                 lazyValue.setEvaluationContext(evaluationContext);
                 value = lazyValue.getNullableValue(true);
 
@@ -56,7 +59,9 @@ public class SmaliRegisterValue extends XNamedValue {
         var managerThread = ((DebugProcessImpl) evaluationContext.getDebugProcess()).getManagerThread();
         managerThread.schedule(new DebuggerCommandImpl() {
             @Override protected void action() {
-                assert value != null;
+                if (node.isObsolete()) {
+                    return;
+                }
                 if (!(value instanceof ObjectReference objRef)) {
                     node.addChildren(XValueChildrenList.EMPTY, true);
                     return;

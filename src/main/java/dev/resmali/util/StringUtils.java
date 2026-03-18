@@ -42,7 +42,7 @@ public class StringUtils {
 
     @Nullable
     public static String parseQuotedString(String str) {
-        if (str.charAt(0) != '"') {
+        if (str.isEmpty() || str.charAt(0) != '"') {
             return null;
         }
 

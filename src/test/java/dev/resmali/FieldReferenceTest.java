@@ -71,7 +71,7 @@ public class FieldReferenceTest extends JavaResolveTestCase {
      * Test a reference to a smali field from a smali class
      */
     public void testSmaliReferenceFromSmali() throws Exception {
-        createFile("blarg.smali", ".class public Lblarg; .super Ljava/lang/Object;" +
+        createFile("blarg.smali", ".class public Lblarg; .super Ljava/lang/Object;\n" +
                 ".field public static blort:I");
 
         String text =

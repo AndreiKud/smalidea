@@ -56,7 +56,7 @@ public abstract class SmaliBaseReferenceListStub<T extends SmaliBaseReferenceLis
     }
 
     @NotNull
-    public SmaliClassType[] getReferencedTypes() {
+    public synchronized SmaliClassType[] getReferencedTypes() {
         if (classTypes == null) {
             classTypes = new SmaliClassType[smaliTypeNames.length];
             for (int i = 0; i< smaliTypeNames.length; i++) {

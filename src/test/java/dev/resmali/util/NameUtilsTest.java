@@ -80,6 +80,7 @@ public class NameUtilsTest {
         Assert.assertEquals(smaliType, NameUtils.javaToSmaliType(javaType));
     }
 
+    @Test
     public void testShortNameFromQualifiedName() {
         Assert.assertEquals("blah", NameUtils.shortNameFromQualifiedName("org.blah.blah"));
         Assert.assertEquals("blah", NameUtils.shortNameFromQualifiedName("blah"));

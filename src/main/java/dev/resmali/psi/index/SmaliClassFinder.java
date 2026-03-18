@@ -50,7 +50,7 @@ public class SmaliClassFinder extends PsiElementFinder {
 
     @Override
     public PsiClass findClass(@NotNull String qualifiedName, @NotNull GlobalSearchScope scope) {
-        Collection<SmaliClass> classes = SmaliClassNameIndex.INSTANCE.get(qualifiedName, project, scope);
+        Collection<SmaliClass> classes = getSmaliClasses(qualifiedName, scope);
         if (classes != null && classes.size() == 1) {
             return classes.iterator().next();
         }
@@ -60,10 +60,14 @@ public class SmaliClassFinder extends PsiElementFinder {
     @NotNull
     @Override
     public PsiClass[] findClasses(@NotNull String qualifiedName, @NotNull GlobalSearchScope scope) {
-        PsiClass cls = findClass(qualifiedName, scope);
-        if (cls != null) {
-            return new PsiClass[] {cls};
+        Collection<SmaliClass> classes = getSmaliClasses(qualifiedName, scope);
+        if (classes != null && !classes.isEmpty()) {
+            return classes.toArray(PsiClass[]::new);
         }
         return PsiClass.EMPTY_ARRAY;
+    }
+
+    private Collection<SmaliClass> getSmaliClasses(@NotNull String qualifiedName, @NotNull GlobalSearchScope scope) {
+        return SmaliClassNameIndex.INSTANCE.get(qualifiedName, project, scope);
     }
 }

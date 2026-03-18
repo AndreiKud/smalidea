@@ -37,6 +37,7 @@ import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import dev.resmali.SmaliFileType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -49,6 +50,10 @@ public class SmaliHighlighterFactory extends SyntaxHighlighterFactory implements
 
     @Nullable @Override
     public SyntaxHighlighter create(@NotNull FileType fileType, @Nullable Project project, @Nullable VirtualFile file) {
-        return null;
+        if (fileType instanceof SmaliFileType) {
+            return new SmaliHighlighter();
+        } else {
+            return null;
+        }
     }
 }

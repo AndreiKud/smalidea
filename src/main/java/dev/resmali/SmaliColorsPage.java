@@ -67,6 +67,7 @@ public class SmaliColorsPage implements ColorSettingsPage {
         return new SmaliHighlighter();
     }
 
+    // TODO: error validation "Ljava/Lang/String"?
     @NotNull @Override public String getDemoText() {
         return ".class public Lorg/jf/smalidea/ColorExample;\n" +
                 ".super Ljava/lang/Object;\n" +

@@ -42,7 +42,7 @@ import dev.resmali.smalideaParser;
 
 public class SmaliParser implements PsiParser {
     @NotNull @Override public ASTNode parse(IElementType root, PsiBuilder builder) {
-        builder.setDebugMode(true);
+        // builder.setDebugMode(true);
 
         PsiBuilder.Marker rootMarker = builder.mark();
         PsiBuilder.Marker classMarker = builder.mark();

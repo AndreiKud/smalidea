@@ -14,6 +14,7 @@ import dev.resmali.psi.impl.SmaliFile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class SmaliStructureViewElement implements StructureViewTreeElement, SortableTreeElement {
     private final NavigatablePsiElement element;
@@ -47,6 +48,19 @@ public class SmaliStructureViewElement implements StructureViewTreeElement, Sort
     public String getAlphaSortKey() {
         String name = element.getName();
         return name != null ? name : "";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SmaliStructureViewElement that = (SmaliStructureViewElement) o;
+        return Objects.equals(element, that.element);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(element);
     }
 
     @NotNull
