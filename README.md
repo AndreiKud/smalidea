@@ -1,9 +1,10 @@
 # ReSmali
 
+[![Version](https://img.shields.io/jetbrains/plugin/v/30774-resmali)](https://plugins.jetbrains.com/plugin/30774-resmali?noRedirect=true)
+
 ReSmali is a fork of the original [smalidea](https://github.com/JesusFreke/smalidea) plugin by Ben Gruver (JesusFreke).
 Renamed to comply with
 JetBrains' [plugin name policy](https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html?_cl=MTsxOzE7V3RwUWFGU1hRcUpnUFRmaHMwQ1hITnpiVTlwZ25RRnpzY1Z2V3A3RTZ6OE5BVW1ISTZ2eFZ3bzQxZEY5OXY1STs%3D#plugin-name).
-Available on [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/30774-resmali/).
 
 > [!WARNING]  
 > Plugin is still in the development stage and bugs are expected. Please report any issues. Thank you.
